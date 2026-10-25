@@ -190,15 +190,15 @@ html,body{margin:0;height:100%;overflow:hidden;background:#0f1a2b;
   background:var(--bg) center/100% 100% no-repeat}
 
 /* title */
-#title{position:absolute;right:20.5%;left:21%;top:5.8%;height:6.2%;
-  display:flex;align-items:center;justify-content:center;padding:0 3%;overflow:hidden}
+#title{position:absolute;right:19.8%;left:20.4%;top:5.27%;height:6.76%;
+  display:flex;align-items:center;justify-content:center;padding:0 4%;overflow:hidden}
 #title span{display:block;width:100%;text-align:center;white-space:nowrap;
   color:#123a72;font-weight:900;line-height:1.15;letter-spacing:-.2px;
   text-shadow:0 1px 0 #ffffff66}
 
 /* whiteboard */
-#wb{position:absolute;right:4.6%;left:4.6%;top:18.2%;height:29.4%;
-  display:flex;flex-direction:column;overflow:hidden;padding:1.2% 1.6% 2.6%}
+#wb{position:absolute;right:4.4%;left:4.3%;top:17.75%;height:30.4%;
+  display:flex;flex-direction:column;overflow:hidden;padding:0.6% 1.2%}
 #wb .frame{position:static;flex:1;min-height:0;display:flex;flex-direction:column;
   border:0;border-radius:0;background:none;box-shadow:none;overflow:hidden}
 #board{flex:1;overflow:hidden;background:none}
@@ -215,8 +215,8 @@ html,body{margin:0;height:100%;overflow:hidden;background:#0f1a2b;
 @keyframes mIn{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
 
 /* three-line transcript */
-#tx{position:absolute;right:12%;left:8.5%;top:53.6%;height:12.8%;
-  display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding:0 2%}
+#tx{position:absolute;right:10%;left:6.9%;top:56.5%;height:12%;
+  display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden;padding:0 1.6%}
 #txin{will-change:transform;transition:transform .36s cubic-bezier(.3,.72,.3,1)}
 #tx .l{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;
   color:#8a929c;font-weight:700;opacity:0;transition:color .28s,opacity .28s}
@@ -224,7 +224,7 @@ html,body{margin:0;height:100%;overflow:hidden;background:#0f1a2b;
 #tx .l.cur{color:#123a72;font-weight:900;opacity:1}
 
 /* controls */
-#ct{position:absolute;right:10.5%;left:10.5%;top:88.5%;height:5.4%;
+#ct{position:absolute;right:9.3%;left:9.0%;top:87.7%;height:6.9%;
   display:flex;align-items:center;gap:2.4%;font-size:calc(15*var(--u))}
 .btn{flex:0 0 auto;display:flex;align-items:center;justify-content:center;
   width:2.85em;height:2.85em;border:0;border-radius:50%;background:#ffffffd9;color:#123a72;
@@ -368,10 +368,11 @@ function indexIn(k, t){
 /* transcript: exactly three visible rows, the current one in the middle */
 function buildLines(){
   var w = (tx.clientWidth || 300) * 0.96;
-  var boxH = Math.max(36, (stage.clientHeight || 800) * 0.128);   /* the artwork panel */
-  var base = Math.max(10.5, Math.min(19, w / 17.5));
-  var maxChars = Math.max(13, Math.floor(w / (base * 0.54)));
-  lineH = Math.max(12, Math.min(Math.round(base * 1.66), Math.floor(boxH / 3)));
+  /* the artwork panel has three ruled rows between 56.6% and 65.6% of its height */
+  var Hpx = stage.clientHeight || 800;
+  lineH = Math.max(14, Math.round(Hpx * (65.64 - 56.56) / 200));   /* = row span */
+  var base = Math.max(10.5, Math.min(19, lineH * 0.58));
+  var maxChars = Math.max(13, Math.floor(w / (base * 0.55)));
   var out = [];
   for (var i = 0; i < M_LINES.length; i++){
     var L = M_LINES[i], t = String(L.text).replace(/\s+/g, ' ').trim();
@@ -401,8 +402,12 @@ function buildLines(){
     txin.appendChild(d);
     linesEls.push(d);
   }
+  var Hpx = stage.clientHeight || 800;
   tx.style.height = tx.style.minHeight = (lineH * 3) + 'px';
   tx.style.lineHeight = lineH + 'px';
+  /* centre the three rows on the artwork: first rule at 56.56%, last at 65.64% */
+  tx.style.top = (Hpx * 0.5656 - lineH / 2) + 'px';
+  tx.style.bottom = 'auto';
   curLine = -1;
 }
 function showLine(i){
