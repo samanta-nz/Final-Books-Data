@@ -98,6 +98,27 @@ def bg_jpeg(png, quality=82, width=901):
     return b.getvalue()
 
 
+FONTS = [
+    ('Vazirmatn', 400, 'vazirmatn-arabic-400-normal.woff2'),
+    ('Vazirmatn', 700, 'vazirmatn-arabic-700-normal.woff2'),
+    ('Vazirmatn', 900, 'vazirmatn-arabic-900-normal.woff2'),
+    ('Lalezar', 400, 'lalezar-arabic-400-normal.woff2'),
+]
+
+
+def font_css(folder):
+    """@font-face rules with woff2 files embedded as single-line base64"""
+    out = []
+    for fam, weight, name in FONTS:
+        path = os.path.join(folder, 'fonts', name)
+        if not os.path.exists(path):
+            continue
+        data = base64.b64encode(open(path, 'rb').read()).decode('ascii')
+        out.append(f"@font-face{{font-family:'{fam}';font-style:normal;font-weight:{weight};"
+                   f"font-display:block;src:url(data:font/woff2;base64,{data}) format('woff2')}}")
+    return ''.join(out)
+
+
 # ------------------------------------------------------------- board items ----
 def split_board(html):
     """-> (board css, engine js, slides js) of a lesson's whiteboard html"""
@@ -181,6 +202,7 @@ PAGE = r"""<!DOCTYPE html>
 <meta name="theme-color" content="#0f1a2b">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>__TITLE__</title>
+<style>/* fonts embedded (Vazirmatn + Lalezar) */__FONTS__</style>
 <style>/* whiteboard engine (from the lesson html) */__BOARD_CSS__</style>
 <style>
 :root{--u:1px}
@@ -567,6 +589,7 @@ def build(folder, base, bg_png, bitrate=32000, quality=82, out_dir=None):
     page = (PAGE
             .replace('__TITLE__', esc(title))
             .replace('__TITLEJS__', json.dumps(title, ensure_ascii=False))
+            .replace('__FONTS__', font_css(out_dir))
             .replace('__BOARD_CSS__', strip_body_rules(css))
             .replace('__BG__', bg)
             .replace('__AUDIO__', audio)
