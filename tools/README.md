@@ -12,7 +12,11 @@ python tools/slides_timing.py G09/G09-Math/F01/0101
 # ۲) گزارش فارسی از همهٔ فایل‌های زمان‌بندی یک پوشه
 python tools/make_report.py G09/G09-Math/F01
 
-# ۳) دیدن پخش‌کنندهٔ همگام (باید از طریق http سرو شود، نه file://)
+# ۳) ساخت یک فایل HTML تک‌فایلی با ogg امبد‌شده به base64 (بدون نیاز به سرور)
+python tools/build_embed.py G09/G09-Math/F01/0101
+#   -> G09/G09-Math/F01/0101-sync-embed.html  (صدا + وایت‌بورد + متن، همه درون فایل)
+
+# ۴) دیدن پخش‌کنندهٔ همگام چنددرسی (باید از طریق http سرو شود، نه file://)
 python tools/preview_server.py G09/G09-Math/F01 8099
 #   -> http://localhost:8099/sync-player.html
 ```
