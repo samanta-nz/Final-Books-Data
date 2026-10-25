@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>وایت‌بورد ریاضی نهم: فصل ۱، درس ۲ (مجموعه‌های برابر و زیرمجموعه)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@500;800&display=swap">
+<style>
+:root{--bg:#e9edf2;--tx:#1b2430;--fr:#b9c2cc;--bt:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14181d;--tx:#e6ebf0;--fr:#4a5360;--bt:#262d36}}
+:root[data-theme="dark"]{--bg:#14181d;--tx:#e6ebf0;--fr:#4a5360;--bt:#262d36}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--tx);font-family:Vazirmatn,Tahoma,sans-serif;display:flex;flex-direction:column;gap:8px;padding:8px;box-sizing:border-box}
+.frame{flex:1;min-height:0;display:flex;flex-direction:column;border:9px solid var(--fr);border-radius:14px;background:#fbfdfe;box-shadow:0 6px 24px #0004,inset 0 0 40px #0001;overflow:hidden}
+#board{flex:1;overflow:auto;background:linear-gradient(115deg,#fff0 40%,#e8f1f720 50%,#fff0 60%),#fbfdfe}
+.page{position:relative;padding:2vmin 4vw 10vh;font-size:clamp(17px,2.2vw,30px);line-height:1.85;min-height:100%;color:#222}
+.ln{margin:.12em 0;filter:url(#r)}
+.in{display:inline-block;font-weight:800}
+.h1{font:2.3em Lalezar,Vazirmatn;text-align:center}.h2{font:1.6em Lalezar,Vazirmatn;margin-top:.3em}
+.set{direction:ltr;text-align:center;font-size:1.15em}.set .in{unicode-bidi:isolate}
+.row{display:flex;flex-wrap:wrap;gap:.2em 1.6em;justify-content:center}
+.hl{background:linear-gradient(var(--hc),var(--hc)) no-repeat right 70%/0% 75%;transition:background-size .7s;padding:0 .15em;border-radius:4px}
+.hl.on{background-size:100% 75%}
+.dg svg{width:min(100%,640px);display:block;margin:.4em auto}.dg path{filter:url(#r)}
+.dg text{font-family:Vazirmatn,sans-serif;font-weight:800}.w{opacity:0}.d{stroke-dasharray:1;stroke-dashoffset:1}
+.pen{position:absolute;z-index:5;width:11px;height:62px;margin:0;border-radius:2px 2px 5px 5px;background:linear-gradient(var(--c,#222) 0 70%,#333 70%);transform-origin:50% 0;transform:translate(-50%,0) rotate(-26deg);pointer-events:none;box-shadow:2px 3px 5px #0004;display:none}
+.tray{height:13px;background:linear-gradient(#cfd6dd,#9aa4ae);display:flex;gap:10px;justify-content:center;align-items:flex-end;padding-bottom:2px}
+.tray i{width:34px;height:8px;border-radius:3px;transition:transform .2s}.tray i.on{transform:translateY(-5px)}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;font-size:14px}
+.bar button,.bar select{font:inherit;padding:6px 14px;border-radius:8px;border:1px solid var(--fr);background:var(--bt);color:var(--tx);cursor:pointer}
+#ls{max-width:46vw}#ti{font-weight:800;min-width:9em;text-align:center}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;align-items:center;direction:ltr;unicode-bidi:isolate;margin:0 .2em;font-size:.85em;line-height:1.25}.fr>span:first-child{border-bottom:2px solid currentColor;padding:0 .25em}.rd{direction:ltr;unicode-bidi:isolate;display:inline-block;position:relative;padding-left:.85em}.rd::before{content:'';position:absolute;left:0;top:0;bottom:0;width:.85em;background:currentColor;-webkit-mask:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolyline points='4,62 22,54 44,98 100,3' fill='none' stroke='black' stroke-width='2.4' stroke-linejoin='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center/100% 100% no-repeat;mask:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolyline points='4,62 22,54 44,98 100,3' fill='none' stroke='black' stroke-width='2.4' stroke-linejoin='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center/100% 100% no-repeat}.rd>span{display:inline-block;border-top:2.4px solid currentColor;padding:.1em .2em 0 .05em;line-height:1.35}sup{font-size:.6em;line-height:0}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><filter id="r"><feTurbulence baseFrequency=".035" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="2.4"/></filter></svg>
+<div class="frame"><div id="board"><div class="page"></div></div><div class="tray"></div></div>
+<div class="bar"><button id="pv" title="قبلی">⏮</button><button id="pp">⏸ توقف</button><button id="nx" title="بعدی">⏭</button><select id="ls"></select><span id="ti"></span>
+<select id="sp"><option value=".6">آهسته</option><option value="1" selected>عادی</option><option value="1.6">سریع</option><option value="2.5">خیلی سریع</option></select>
+<label><input type="checkbox" id="au" checked> ادامهٔ خودکار</label></div>
+<script>
+const $=s=>document.querySelector(s),pg=$('.page'),bd=$('#board'),tr=$('.tray');
+const B='#1f4fd1',R='#d62d2d',G='#16883f',K='#222',P='#7b3fbf',O='#e5740b',HC=['#ffe45e','#ffb3c7','#a8f0b8','#9fe3ff'];
+[B,R,G,K,P,O].forEach(c=>{const i=document.createElement('i');i.style.background=c;i.dataset.c=c;tr.append(i)});
+const pn=document.createElement('div');pn.className='pen';
+let vt=0,last=performance.now(),paused=false,sp=1,ticks=[],cur=0,idx=0,hi=0;
+function loop(n){const dt=n-last;last=n;if(!paused)vt+=Math.min(dt,50)*sp;const t=ticks;ticks=[];t.forEach(f=>f());requestAnimationFrame(loop)}requestAnimationFrame(loop);
+const frame=()=>new Promise(r=>ticks.push(r));
+async function anim(ms,f){const g=cur,t0=vt;f(0);while(vt-t0<ms){await frame();if(g!==cur)throw 0;f(Math.min(1,(vt-t0)/ms))}f(1)}
+const sleep=ms=>anim(ms,()=>{});
+function pen(k){pn.style.setProperty('--c',k);pn.style.display='block';tr.querySelectorAll('i').forEach(i=>i.classList.toggle('on',i.dataset.c==k))}
+function at(x,y){const r=pg.getBoundingClientRect();pn.style.left=x-r.left+'px';pn.style.top=y-r.top+'px'}
+async function T(h,c,k,par){const d=document.createElement('div'),s=document.createElement('span');d.className='ln '+c;s.className='in';s.style.color=k;
+s.innerHTML=MJ(h).replace(/\[\[(.+?)\]\]/g,'<span class=hl>$1</span>');d.append(s);(par||pg).append(d);if(!par)d.scrollIntoView({block:'nearest',behavior:'smooth'});
+const l=c=='set',hs=[...s.querySelectorAll('.hl')];hs.forEach(e=>e.style.setProperty('--hc',HC[hi++%4]));
+s.style.clipPath=l?'inset(0 100% 0 0)':'inset(0 0 0 100%)';pen(k);
+await anim(300+h.length*45,p=>{const r=s.getBoundingClientRect(),x=l?r.left+p*r.width:r.right-p*r.width;
+s.style.clipPath=l?`inset(0 ${(1-p)*100}% 0 0)`:`inset(0 0 0 ${(1-p)*100}%)`;at(x,r.top+r.height*.62+Math.sin(p*60)*4)});
+for(const e of hs){e.classList.add('on');await sleep(350)}await sleep(250)}
+async function RW(a,k){const r=document.createElement('div');r.className='row';pg.append(r);r.scrollIntoView({block:'nearest',behavior:'smooth'});for(const t of a)await T(t,'set',k,r)}
+const D=(c,d)=>`<path class="d" stroke="${c}" d="${d}" pathLength="1" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>`;
+const W=(x,y,t,c,z)=>`<text class="w" x="${x}" y="${y}" fill="${c}" font-size="${z}" text-anchor="middle">${t}</text>`;
+async function V(h,vb){const w=document.createElement('div');w.className='ln dg';w.innerHTML=`<svg viewBox="${vb}">${h}</svg>`;pg.append(w);w.scrollIntoView({block:'nearest',behavior:'smooth'});
+for(const e of w.querySelectorAll('.d,.w')){if(e.classList.contains('d')){pen(e.getAttribute('stroke'));const L=e.getTotalLength();
+await anim(600+L*3,p=>{e.style.strokeDashoffset=1-p;const q=e.getPointAtLength(p*L),m=new DOMPoint(q.x,q.y).matrixTransform(e.getScreenCTM());at(m.x,m.y)})}
+else{pen(e.getAttribute('fill'));const r=e.getBoundingClientRect();at(r.left+r.width/2,r.top+r.height/2);await anim(350,p=>e.style.opacity=p)}}await sleep(300)}
+const E1='M60,150a150,105 0 1,0 300,0a150,105 0 1,0 -300,0',E2='M240,150a150,105 0 1,0 300,0a150,105 0 1,0 -300,0';
+const COL=(x,a,c,z)=>a.map((t,i)=>W(x,158+(i-(a.length-1)/2)*36,t,c,z)).join('');
+const VEN=(na,nb,L,M,Rt)=>D(B,E1)+W(95,50,na,B,26)+D(R,E2)+W(505,50,nb,R,26)+COL(150,L,K,26)+COL(300,M,P,28)+COL(450,Rt,K,26);
+function MJ(h){let p;do{p=h;h=h.replace(/@u\{([^{}]*)\}/g,'<sup>$1</sup>').replace(/@r\{([^{}]*)\}/g,'<span class="rd"><span>$1</span></span>').replace(/@f\{([^{}|]*)\|([^{}|]*)\}/g,'<span class="fr"><span>$1</span><span>$2</span></span>')}while(p!=h);return h}
+const CK={B,R,G,K,P,O};
+async function run(it){if(typeof it=='function')return it();const k=CK[it[0]];let t=it.slice(1),c='';if(t[0]=='~')return RW(t.slice(1).split('|'),k);if(t.startsWith('##')){c='h1';t=t.slice(2)}else if(t[0]=='#'){c='h2';t=t.slice(1)}else if(t[0]=='*'){c='set';t=t.slice(1)}return T(t,c,k)}
+const sc=(t,a)=>[t,async()=>{for(const i of a)await run(i)}];
+const pf=(p,a)=>a.map(x=>[p+x[0],x[1]]);
+const GRID=()=>V(D(K,'M50,30h300v240h-300z')+D(K,'M150,30v240')+D(K,'M250,30v240')+D(K,'M50,110h300')+D(K,'M50,190h300')+W(100,85,'۱۰',B,32)+W(200,85,'−۱۰',B,32)+W(300,85,'۱۲',B,32)+W(100,165,'۶',R,32)+W(200,165,'۴',R,32)+W(300,165,'۲',R,32)+W(100,245,'−۴',B,32)+W(200,245,'۱۸',B,32)+W(300,245,'−۲',B,32)+D(R,'M55,120h290v60h-290z'),'0 0 400 300');
+const BOX=()=>V(D(K,'M40,30h140v110h-140z')+D(K,'M230,30h140v110h-140z')+W(300,98,'۰',B,44)+D(K,'M420,30h140v110h-140z')+D(P,'M455,60h70v50h-70z')+W(110,185,'{ }',R,28)+W(110,222,'بدون عضو',R,20)+W(300,185,'{ ۰ }',B,28)+W(300,222,'یک عضو: صفر',B,20)+W(490,185,'{ ∅ }',P,28)+W(490,222,'یک عضو: تهی',P,20),'0 0 600 240');
+const NEST=()=>V(D(O,'M30,150a270,125 0 1,0 540,0a270,125 0 1,0 -540,0')+W(300,52,'C',O,26)+D(R,'M110,150a190,90 0 1,0 380,0a190,90 0 1,0 -380,0')+W(300,86,'B',R,26)+D(B,'M200,150a100,55 0 1,0 200,0a100,55 0 1,0 -200,0')+W(300,158,'A',B,28),'0 0 600 300');
+const NUM=()=>V(D(O,'M20,150a280,135 0 1,0 560,0a280,135 0 1,0 -560,0')+W(300,38,'Q',O,24)+D(R,'M90,150a210,105 0 1,0 420,0a210,105 0 1,0 -420,0')+W(300,68,'Z',R,24)+D(G,'M160,150a140,75 0 1,0 280,0a140,75 0 1,0 -280,0')+W(300,98,'W',G,24)+D(B,'M230,150a70,45 0 1,0 140,0a70,45 0 1,0 -140,0')+W(300,158,'N',B,28),'0 0 600 300');
+const TEAM=()=>V(D(B,E1)+W(95,50,'والیبال',B,24)+D(R,E2)+W(505,50,'فوتبال',R,24)+COL(150,['سامان','احسان','فرشید','حسین'],K,18)+COL(300,['علی','رضا'],P,20)+COL(450,['محمد','حسن','کیوان','سبحان'],K,18),'0 0 600 300');
+const VN=(a,b,l,m,r)=>()=>V(VEN(a,b,l,m,r),'0 0 600 300');
+const L2=[
+sc('برابری: همان عضوها',['O#درس دوم: مجموعه‌های برابر و نمایش مجموعه‌ها','Kبرابر = دقیقاً همان عضوها؛ نه فقط هم‌تعداد','Pمثل دو فهرست اسم: ترتیب فرق کند، اسم کم و زیاد نداشته باشد']),
+sc('جدول کتاب',['Kجمع هر سطر، ستون و قطر = [[۱۲]]',GRID,'R۱۰ + ۱۲ = ۲۲ ← وسط سطر اول: −۱۰','B−۴ + (−۲) = −۶ ← وسط سطر پایین: ۱۸','Gستون اول: ۱۰ + ؟ + (−۴) = ۱۲ ← ۶ | ستون آخر: ۱۲ + ؟ + (−۲) = ۱۲ ← ۲','Pوسط جدول: ۱۲ − (۶ + ۲) = ۴ ؛ قطرها: ۱۰+−۴۲ = ۱۲ ✓ و ۱۲+−۴۴ = ۱۲ ✓','R*A = { ۶، ۴، ۲ } (سطر دوم)','G*B = { ۲، ۴، ۶ } (سه زوج متوالی با میانگین ۴)','P A = B  (هر عضو هر یک در دیگری هست)']),
+sc('هم‌تعداد ≠ برابر',['R*{ ۷، ۸، ۹ }  و  { ۸، ۹، ۱۰ }','Rهر دو ۳ عضو؛ ۷ فقط در اولی و ۱۰ فقط در دومی ← برابر نیستند','Kبرای رد برابری یک عضو متفاوت کافی است']),
+sc('سه عدد متوالی با جمع ۲۷',['O۲۷ ÷ ۳ = ۹ ← عدد وسط','G*{ ۸، ۹، ۱۰ }','R«طبیعی بین ۶ و ۱۰» = { ۷، ۸، ۹ } ← برابر نیست ✗','G«طبیعی بزرگ‌تر از ۷ و کوچک‌تر از ۱۱» ← برابر ✓','G«سه طبیعی متوالی با میانگین ۹» ← برابر ✓','Kاول عضوها را روشن کن، بعد تصمیم بگیر']),
+sc('یک عضو، چند شکل (۱)',['Kمقدار عبارت را پیدا کن؛ شکل متفاوت ≠ عدد متفاوت','B*−@f{@r{۱۴۴}|(−۲)@u{۲}} = −@f{۱۲|۴} = −۳','G*@f{۹|۳} = ۳ ، @r{۲۵} = ۵','Pجای خالی طرف اول: −۳ ، طرف دوم: ۴ ← هر دو مجموعه همان پنج عضو متمایز']),
+sc('یک عضو، چند شکل (۲)',['B*@f{۴|۱۰} = @f{۲|۵}','G*@r{@f{۴|۹}} = @f{۲|۳}','P*−@f{۱|۲} = −@f{۵|۱۰}','O*@f{۶۲۵|۱۰۰۰} = @f{۵|۸}','Rجای خالی: سمت اول −۲ ، سمت دوم ۷']),
+sc('زیرمجموعه',['B#زیرمجموعه','P*D = { −۱۰، −۴، −۲، ۲، ۴، ۶، ۱۰، ۱۲، ۱۸ }  ← ۹ عضو','G*B = { ۶، ۱۲، ۱۸ } (بخش‌پذیر بر ۳)','Gهر عضو B در D هست ⟵ B ⊆ D','Kزیرمجموعه می‌تواند با مجموعهٔ اصلی برابر باشد؛ شرط: [[همهٔ]] عضوها']),
+sc('زوج‌ها و ⊄',['Oهمهٔ عددهای جدول زوج‌اند: مجموعهٔ زوج‌ها = D ← زیرمجموعه و برابر','Rهر مجموعه زیرمجموعهٔ خودش است','R*{ ۱۰، ۴، −۶، ۲ } ⊄ D  ← −۶ در جدول نیست','Kسه عضو مشترک، نبودنِ آن یک عضو را جبران نمی‌کند']),
+sc('تهی زیرمجموعه است',['B#مجموعهٔ تهی','Kفردهای D = ∅ ← ∅ ⊆ D ✓ (عضوی نیست که بیرونِ D باشد)','Rتهی زیرمجموعهٔ هر مجموعه است؛ نه عضو هر مجموعه!','P*{ ۱، ۲ } : ∅ ⊆ آن ✓ ولی ∅ ∈ آن ✗','Oعدد ۱ عضو است؛ { ۱ } زیرمجموعه']),
+sc('نمودار تودرتو',[NEST,'GA ⊆ B ، B ⊆ C ، A ⊆ C  (هر عضو A در B و B در C)','R«C ⊄ A» درست ؛ «B ⊆ A» نادرست ؛ «A ⊄ C» نادرست']),
+sc('مثال عددیِ کتاب',['B*A = { ۱، ۳، ۶، ۴ }','R*B = { ۵، ۱، ۳ }','G*C = { ۲، ۵، ۱، ۳، ۶ }','RB ⊄ A (۵ در A نیست) ؛ A ⊄ B (۴ در B نیست)','GB ⊆ C ؛ { ۵، ۶ } ⊆ C','RA ⊄ C (شاهد: ۴)','P{ ۱، ۴ } زیرمجموعهٔ A است، ولی [[عضو]] A نیست؛ ۳ عضو B است']),
+sc('همهٔ زیرمجموعه‌ها',['Kنظم: اول ∅ ، بعد یک‌عضوی‌ها ، دو‌عضوی‌ها ، ... ، خود مجموعه','G*{ ۱۰، ۱۱ } ← ∅ ، {۱۰} ، {۱۱} ، {۱۰، ۱۱} ← ۴','B*{ a، b، c } ← ۱ + ۳ + ۳ + ۱ = ۸','P*{ a، b، c، d } ← ۱ + ۴ + ۶ + ۴ + ۱ = ۱۶','O*۲ × ۲ × ۲ = ۸ ، ۲ × ۲ × ۲ × ۲ = ۱۶  (هر عضو: باشد یا نباشد)']),
+sc('N و W و Z',['B*N = { ۱، ۲، ۳، ... }  طبیعی','G*W = { ۰، ۱، ۲، ... }  حسابی','R*Z = { ... ، −۲، −۱، ۰، ۱، ۲، ... }  صحیح','K N ⊆ W ⊆ Z ؛ ۰ طبیعی نیست ؛ −۲ صحیح است نه حسابی','P۵: طبیعی و حسابی و صحیح ؛ −۵ فقط صحیح']),
+sc('عددهای گویا',[NUM,'Kگویا Q: کسری با صورت و مخرج صحیح، [[مخرج ≠ صفر]]','G*@f{۳|۴} ، −@f{۲|۵} ، @f{۷|۲}','O*۵ = @f{۵|۱} ، −۳ = −@f{۳|۱} ، ۰ = @f{۰|۱}','R*N ⊆ W ⊆ Z ⊆ Q','Pبین دو گویا باز هم گویا هست (عضو «بعدی» ندارد)']),
+sc('نمایش با شرط',['B#نوشتن مجموعه با شرط','G*{ ۲k | k ∈ N } = { ۲، ۴، ۶، ... }','Rخط عمودی = «به‌طوری‌که»؛ نه تقسیم','P*{ ۲k − ۱ | k ∈ N } = { ۱، ۳، ۵، ... }','O*{ ۳k | k ∈ N } ← مضرب‌های ۳','B*{ k − ۱ | k ∈ N } = { ۰، ۱، ۲، ... }']),
+sc('پنج n به‌علاوهٔ سه',['G*{ ۵n + ۳ | n ∈ N } = { ۸، ۱۳، ۱۸، ۲۳، ۲۸، ۳۳، ۳۸، ... }','Kاختلاف هر دو عضوِ پشت‌سرهم = ۵','R۳ عضو نیست؛ چون n = ۰ طبیعی نیست']),
+sc('نامساوی و مرز',['B*{ x ∈ N | ۶ < x < ۱۱ } = { x ∈ N | ۷ ≤ x ≤ ۱۰ } = { ۷، ۸، ۹، ۱۰ }','G*{ x ∈ Z | −۵ ≤ x < ۵ } = { −۵ ... ۴ } ← ۱۰ عضو','R−۵ عضو (با ≤) ؛ ۵ نه (با <) ؛ @f{۹|۲} نه (صحیح نیست)','P*فردهای صحیح: { ... ، −۵، −۳، −۱، ۱، ۳، ۵، ... }','O*{ ۳k + ۲ | k ∈ Z } = { ... ، −۴، −۱، ۲، ۵، ۸، ... }']),
+sc('تمرین‌های پایانی (۱)',['O#تمرین‌های پایانی','B*A = { −۲، −۱، ۰، ۱، ۲ }','G*B = { x ∈ A | x@u{۲} ≤ ۲ } = { −۱، ۰، ۱ }','G*C = { x ∈ A | −۱ ≤ x ≤ ۱ } = { −۱، ۰، ۱ } ← B = C','R*D = { x | x@u{۴} = ۱ } = { −۱ ، ۱ } ← با B و C برابر نیست (۰ ندارد)']),
+sc('تمرین‌های پایانی (۲)',['B*A = { ۱ } ⊆ B = { ۱، ۲ } ⊆ C = { ۱، ۲، ۳ } ← A ⊆ C','R x ∈ N و x@u{۲} + ۱ = ۳ ⟵ x@u{۲} = ۲ ← ∅ (۱@u{۲} = ۱ ، ۲@u{۲} = ۴)','P*{ ۲x | x ∈ { ۰، ۲، ۳ } } = { ۰، ۴، ۶ }','G*∅ ، {۰} ، {۴} ، {۶} ، {۰،۴} ، {۰،۶} ، {۴،۶} ، {۰،۴،۶}','Kمجموعهٔ { ۰ } با ∅ یکی نیست']),
+sc('تمرین: نمودار چهار مجموعه',[NUM,'Rهر گویا حسابی است ✗ (@f{۱|۲})','Gهر حسابی گویاست ✓ (مخرج ۱)','Gهر صحیح گویاست ✓','Gبعضی گویاها صحیح‌اند ✓ (۲)']),
+sc('نمونهٔ تکمیلی',['B*{ −۲، ۰، ۲، ۴ }: نامنفی‌ها = { ۰، ۲، ۴ } ⊆ مجموعه (برابر نیست)','Gطبیعی‌های آن = { ۲، ۴ } (۰ طبیعی نیست)','O*۲ = @f{۴|۲} ، ۴ = @r{۱۶}  ← مجموعه عوض نشد','Kبه‌ترتیب: عضوها ← نوع رابطه ← شرط‌ها']),
+sc('جمع‌بندی درس دوم',['P##جمع‌بندی','Bبرابری: هر دو جهت','Gزیرمجموعه: همهٔ عضوها ؛ ∅ زیرمجموعهٔ هر مجموعه','Oعضو ≠ زیرمجموعه','Rعلامت‌ها جملهٔ روشن‌اند: ∈ ، ⊆ ، =' ])];
+const S=L2;
+const ls=$('#ls');S.forEach((x,i)=>ls.add(new Option(x[0],i)));ls.onchange=()=>play(+ls.value);
+async function play(i){const g=++cur;idx=i;pg.replaceChildren(pn);pn.style.display='none';bd.scrollTop=0;ls.value=i;$('#ti').textContent=`${i+1}/${S.length} · ${S[i][0]}`;
+try{await sleep(400);await S[i][1]();if($('#au').checked){await sleep(2500);if(i<S.length-1)play(i+1)}}catch(e){if(e!==0)throw e}}
+$('#nx').onclick=()=>play(Math.min(idx+1,S.length-1));$('#pv').onclick=()=>play(Math.max(idx-1,0));
+$('#pp').onclick=()=>{paused=!paused;$('#pp').textContent=paused?'▶ ادامه':'⏸ توقف'};
+$('#sp').onchange=e=>sp=+e.target.value;
+addEventListener('keydown',e=>{if(e.key==' '){e.preventDefault();$('#pp').click()}if(e.key=='ArrowLeft')$('#nx').click();if(e.key=='ArrowRight')$('#pv').click()});
+play(0);
+</script></body></html>
