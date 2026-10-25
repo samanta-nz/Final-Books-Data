@@ -109,7 +109,7 @@ def units(text):
 
 # --------------------------------------------------------------------- dp ----
 def dp_anchor(pred, mids, band=18.0, skip=1.0):
-    """monotone many-to-one alignment of predictions to pause midpoints.
+    """monotone many-to-one alignment of predictions to pause ends.
 
     returns [(sentence_index, pause_index), ...]
     """
@@ -155,7 +155,8 @@ def align(ogg, txt, iters=3, band=18.0, verbose=True):
     dur = len(x) / SR
     db = envelope(x)
     plist, voiced = pauses(db)
-    mids = np.array([(a + b) / 2 for a, b in plist])
+    # a new sentence starts when the voice comes back: use the END of the pause
+    mids = np.array([b for a, b in plist])
     cum_voiced = np.cumsum(voiced) / 100.0
     doc, secs, us = units(txt)
 
@@ -175,6 +176,9 @@ def align(ogg, txt, iters=3, band=18.0, verbose=True):
         at, aw = at[keep], aw[keep]
         pred = np.interp(cw, aw, at)
 
+    # `pred` is the time at the END of every sentence (cumulative weight);
+    # the sentence itself starts where the previous one ended.
+    starts = np.concatenate(([0.0], pred[:-1])) if len(pred) else pred
     resid = np.array([pred[k] - mids[j] for k, j in pairs]) if pairs else np.array([])
     stats = {
         'duration': round(dur, 2),
@@ -204,8 +208,9 @@ def align(ogg, txt, iters=3, band=18.0, verbose=True):
                   f"{'  ' * 0}{s['title'][:62]}")
     return {'doc': doc, 'stats': stats, 'sections': sec_out,
             'pauses': [[round(a, 2), round(b, 2)] for a, b in plist],
-            'sentences': [{'t': round(float(t), 2), 'sec': u['sec'], 'text': u['text']}
-                          for t, u in zip(pred, us)]}
+            'sentences': [{'t': round(float(st), 2), 'end': round(float(en), 2),
+                           'sec': u['sec'], 'text': u['text']}
+                          for st, en, u in zip(starts, pred, us)]}
 
 
 if __name__ == '__main__':

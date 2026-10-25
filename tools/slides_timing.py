@@ -230,8 +230,8 @@ def build(lesson_dir, base, out=None, band=18.0):
                 prev = cut
                 if not span:
                     continue
-                st = 0.0 if span[0] == 0 else sents[span[0] - 1]['t']
-                en = si['end'] if cut >= len(idx) else sents[span[-1]]['t']
+                st = 0.0 if span[0] == 0 else sents[span[0] - 1].get('end', sents[span[0] - 1]['t'])
+                en = si['end'] if cut >= len(idx) else sents[span[-1]].get('end', sents[span[-1]]['t'])
                 segs.append([st, en, o, j])
 
         # sections without a slide are folded into the neighbouring slide
