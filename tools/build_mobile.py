@@ -81,7 +81,10 @@ def audio_bytes(ogg, bitrate=32000, sr=22050):
 
 
 def b64(data, width=400):
+    """base64 text; width=None -> one single line (required inside CSS/attributes)"""
     s = base64.b64encode(data).decode('ascii')
+    if not width:
+        return s
     return '\n'.join(s[i:i + width] for i in range(0, len(s), width))
 
 
@@ -180,14 +183,15 @@ PAGE = r"""<!DOCTYPE html>
 <title>__TITLE__</title>
 <style>/* whiteboard engine (from the lesson html) */__BOARD_CSS__</style>
 <style>
-:root{--u:1px;--bg:url("data:image/jpeg;base64,__BG__")}
-html,body{margin:0;height:100%;overflow:hidden;background:#0f1a2b;
+:root{--u:1px}
+html,body{margin:0;height:100%;overflow:hidden;background:#e9edf2;
   font-family:Vazirmatn,Tahoma,system-ui,sans-serif;user-select:none;
   -webkit-user-select:none;touch-action:manipulation;-webkit-text-size-adjust:100%}
-/* the artwork IS the page: full bleed, no bars, every overlay sits on it */
-#stage{position:fixed;inset:0;z-index:1;
-  width:100vw;height:100vh;height:100dvh;
-  background:var(--bg) center/100% 100% no-repeat}
+/* the artwork IS the page: a real <img> layer, stretched to the viewport so that
+   every overlay in % of the same box lands exactly on its frame in the artwork */
+#bg{position:fixed;inset:0;width:100%;height:100%;object-fit:fill;
+  z-index:0;pointer-events:none;-webkit-user-select:none;user-select:none;-webkit-user-drag:none}
+#stage{position:fixed;inset:0;z-index:1;width:100vw;height:100vh;height:100dvh}
 
 /* title */
 #title{position:absolute;right:19.8%;left:20.4%;top:5.27%;height:6.76%;
@@ -246,6 +250,7 @@ html,body{margin:0;height:100%;overflow:hidden;background:#0f1a2b;
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="r"><feTurbulence baseFrequency=".035" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="2.4"/></filter></svg>
+<img id="bg" alt="" src="data:image/jpeg;base64,__BG__">
 <div id="stage">
   <div id="title"><span>__TITLE__</span></div>
   <div id="wb"><div class="frame"><div id="board"><div class="page"></div></div><div class="tray" style="display:none"></div></div></div>
@@ -557,7 +562,7 @@ def build(folder, base, bg_png, bitrate=32000, quality=82, out_dir=None):
     lines = [{'t': s['t'], 'e': max(s['t'] + 0.4, s['end']), 'text': s['text']}
              for s in timing['sentences']]
     audio = b64(audio_bytes(os.path.join(folder, base + '.ogg'), bitrate))
-    bg = b64(bg_jpeg(bg_png, quality=quality), width=76)
+    bg = b64(bg_jpeg(bg_png, quality=quality), width=None)
 
     page = (PAGE
             .replace('__TITLE__', esc(title))
