@@ -45,10 +45,11 @@ html,body{margin:0;height:100%;overflow:hidden;background:#e9edf2;
 
 /* title */
 #title{position:absolute;right:19.8%;left:20.4%;top:5.27%;height:6.76%;
-  display:flex;align-items:center;justify-content:center;padding:0 4%;overflow:hidden}
-#title span{display:block;width:100%;text-align:center;white-space:nowrap;
-  color:#123a72;font-weight:900;line-height:1.15;letter-spacing:-.2px;
-  text-shadow:0 1px 0 #ffffff66}
+  display:flex;align-items:center;justify-content:center;padding:0 5%;overflow:hidden}
+#title span{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;
+  width:100%;text-align:center;white-space:normal;overflow:hidden;
+  color:#123a72;font-weight:900;line-height:1.16;letter-spacing:-.1px;
+  text-shadow:0 1px 0 #ffffff66;word-break:normal}
 
 /* whiteboard */
 #wb{position:absolute;right:4.4%;left:4.3%;top:17.75%;height:30.4%;
@@ -70,7 +71,9 @@ html,body{margin:0;height:100%;overflow:hidden;background:#e9edf2;
 
 /* three-line transcript */
 #tx{position:absolute;right:10%;left:6.9%;top:56.5%;height:12%;
-  display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden;padding:0 1.6%}
+  display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden;
+  padding:0 2%;-webkit-mask-image:linear-gradient(#0000,#000 12%,#000 88%,#0000);
+  mask-image:linear-gradient(#0000,#000 12%,#000 88%,#0000)}
 #txin{will-change:transform;transition:transform .36s cubic-bezier(.3,.72,.3,1)}
 #tx .l{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;
   color:#8a929c;font-weight:700;opacity:0;transition:color .28s,opacity .28s}
@@ -86,6 +89,10 @@ html,body{margin:0;height:100%;overflow:hidden;background:#e9edf2;
 .btn svg{width:54%;height:54%;fill:currentColor}
 .btn.main{width:3.45em;height:3.45em;background:#1f6fd1;color:#fff;box-shadow:0 2px 7px #1f6fd155}
 .btn:active{transform:translateY(1px)}
+#rate{flex:0 0 auto;width:3.4em;height:2.5em;border:0;border-radius:13px;
+  background:#ffffffdf;color:#123a72;font-family:inherit;font-weight:800;font-size:.66em;
+  text-align:center;text-align-last:center;appearance:none;cursor:pointer;
+  box-shadow:0 1px 3px #0002,inset 0 -2px 0 #0000000f;padding:0 .2em}
 #sel{flex:1 1 auto;min-width:0;height:2.5em;border:0;border-radius:13px;
   background:#ffffffdf;color:#123a72;font-family:inherit;font-weight:700;font-size:.72em;
   padding:0 26px 0 .7em;text-overflow:ellipsis;appearance:none;cursor:pointer;
@@ -106,10 +113,15 @@ html,body{margin:0;height:100%;overflow:hidden;background:#e9edf2;
   <div id="wb"><div class="frame"><div id="board"><div class="page"></div></div><div class="tray" style="display:none"></div></div></div>
   <div id="tx"><div id="txin"></div></div>
   <div id="ct">
-    <button class="btn" id="pv" aria-label="بخش قبل"><svg viewBox="0 0 24 24"><path d="M18 5v14l-9-7zM7 5h2v14H7z"/></svg></button>
-    <button class="btn main" id="pp" aria-label="پخش"><svg viewBox="0 0 24 24" id="ic"><path d="M8 5v14l11-7z"/></svg></button>
     <button class="btn" id="nx" aria-label="بخش بعد"><svg viewBox="0 0 24 24"><path d="M6 5v14l9-7zM15 5h2v14h-2z"/></svg></button>
+    <button class="btn main" id="pp" aria-label="پخش"><svg viewBox="0 0 24 24" id="ic"><path d="M8 5v14l11-7z"/></svg></button>
+    <button class="btn" id="pv" aria-label="بخش قبل"><svg viewBox="0 0 24 24"><path d="M18 5v14l-9-7zM7 5h2v14H7z"/></svg></button>
     <select id="sel" aria-label="بخش‌ها"></select>
+    <select id="rate" aria-label="سرعت پخش">
+      <option value="0.5">۰٫۵×</option><option value="0.75">۰٫۷۵×</option>
+      <option value="1" selected>۱×</option><option value="1.25">۱٫۲۵×</option>
+      <option value="1.5">۱٫۵×</option><option value="2">۲×</option>
+    </select>
     <span id="time">0:00</span>
   </div>
 </div>
@@ -18698,8 +18710,8 @@ function buildLines(){
   var w = (tx.clientWidth || 300) * 0.96;
   /* the artwork panel has three ruled rows between 56.6% and 65.6% of its height */
   var Hpx = stage.clientHeight || 800;
-  lineH = Math.max(14, Math.round(Hpx * (65.64 - 56.56) / 200));   /* = row span */
-  var base = Math.max(10.5, Math.min(19, lineH * 0.58));
+  lineH = Math.max(13, Math.round(Hpx * (65.64 - 56.56) / 200));   /* = row span */
+  var base = Math.max(9.5, Math.min(17, lineH * 0.52));            /* a touch smaller */
   var maxChars = Math.max(13, Math.floor(w / (base * 0.55)));
   var out = [];
   for (var i = 0; i < M_LINES.length; i++){
@@ -18763,15 +18775,21 @@ function setIcon(on){
 }
 function fitTitle(){
   var el = q('title'), sp = el.querySelector('span');
-  if (!el.clientWidth){ el.style.fontSize = (17 * u) + 'px'; return; }
-  var size = 22 * u;
-  el.style.fontSize = size + 'px';
+  if (!el.clientWidth){ el.style.fontSize = (14 * u) + 'px'; return; }
+  var H = el.clientHeight, W = el.clientWidth - 6;
+  var size = Math.min(16 * u, H / 2.35);             /* two small lines must fit */
   var guard = 0;
-  while (guard++ < 40 && (sp.scrollWidth > el.clientWidth - 8 || sp.scrollHeight > el.clientHeight - 2)){
-    size *= 0.94;
+  while (guard++ < 40){
     el.style.fontSize = size.toFixed(2) + 'px';
-    if (size < 8) break;
+    sp.style.webkitLineClamp = 'unset';              /* measure the real height */
+    sp.style.display = 'block';
+    var need = sp.scrollHeight, wide = sp.scrollWidth;
+    sp.style.display = '-webkit-box';
+    sp.style.webkitLineClamp = '2';
+    if ((need <= H + 1 && wide <= W + 1) || size < 7) break;
+    size *= 0.95;
   }
+  el.style.fontSize = size.toFixed(2) + 'px';
 }
 function tick(){
   var t = au.currentTime || 0;
@@ -18815,6 +18833,23 @@ function layout(){
   })();
 })();
 q('pp').onclick = function(){ au.paused ? au.play() : au.pause(); };
+var rateSel = q('rate');
+function applyRate(){
+  var r = parseFloat(rateSel.value) || 1;
+  try { au.playbackRate = r; au.defaultPlaybackRate = r; } catch (e) {}
+  try { localStorage.setItem('mrate', String(r)); } catch (e) {}
+}
+rateSel.onchange = applyRate;
+try {
+  var savedRate = localStorage.getItem('mrate');
+  if (savedRate && rateSel.querySelector('option[value="' + savedRate + '"]')) rateSel.value = savedRate;
+} catch (e) {}
+applyRate();
+au.addEventListener('loadedmetadata', applyRate);
+au.addEventListener('play', applyRate);
+au.addEventListener('ratechange', function(){
+  if (Math.abs((au.playbackRate || 1) - (parseFloat(rateSel.value) || 1)) > 0.01) applyRate();
+});
 au.addEventListener('play', function(){ setIcon(true); });
 au.addEventListener('pause', function(){ setIcon(false); });
 au.addEventListener('ended', function(){ setIcon(false); });

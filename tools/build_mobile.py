@@ -39,6 +39,20 @@ def nice_title(doc, base):
     return t.strip(' ،:') or base
 
 
+def chapter_of(rows, folder=''):
+    """'فصل اوّل، درس اوّل: ...' + G09 -> 'ریاضی نهم — فصل اوّل'"""
+    grade = ''
+    gm = re.search(r'G(\d\d)', os.path.abspath(folder or ''))
+    if gm:
+        grade = {'09': 'نهم', '10': 'دهم', '11': 'یازدهم', '12': 'دوازدهم'}.get(gm.group(1), '')
+    for _b, title, _t in rows:
+        mm = re.search(r'(فصل\s+[^،:]+)', title or '')
+        if mm:
+            ch = mm.group(1).strip()
+            return (f'ریاضی {grade} — {ch}' if grade else ch)
+    return ''
+
+
 def mmss(t):
     t = max(0.0, float(t))
     return f'{int(t // 60)}:{int(t % 60):02d}'
@@ -106,12 +120,24 @@ FONTS = [
 ]
 
 
+FONT_DIRS = ['G09/G09-Math/F01/mobile/fonts', 'fonts']
+
+
+def find_font(folder, name):
+    """fonts live next to the builder output, or in the F01 mobile folder (shared)"""
+    for cand in [os.path.join(folder, 'fonts', name)] + \
+                [os.path.join(REPO, d, name) for d in FONT_DIRS]:
+        if os.path.exists(cand):
+            return cand
+    return None
+
+
 def font_css(folder):
     """@font-face rules with woff2 files embedded as single-line base64"""
     out = []
     for fam, weight, name in FONTS:
-        path = os.path.join(folder, 'fonts', name)
-        if not os.path.exists(path):
+        path = find_font(folder, name)
+        if not path:
             continue
         data = base64.b64encode(open(path, 'rb').read()).decode('ascii')
         out.append(f"@font-face{{font-family:'{fam}';font-style:normal;font-weight:{weight};"
@@ -217,10 +243,11 @@ html,body{margin:0;height:100%;overflow:hidden;background:#e9edf2;
 
 /* title */
 #title{position:absolute;right:19.8%;left:20.4%;top:5.27%;height:6.76%;
-  display:flex;align-items:center;justify-content:center;padding:0 4%;overflow:hidden}
-#title span{display:block;width:100%;text-align:center;white-space:nowrap;
-  color:#123a72;font-weight:900;line-height:1.15;letter-spacing:-.2px;
-  text-shadow:0 1px 0 #ffffff66}
+  display:flex;align-items:center;justify-content:center;padding:0 5%;overflow:hidden}
+#title span{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;
+  width:100%;text-align:center;white-space:normal;overflow:hidden;
+  color:#123a72;font-weight:900;line-height:1.16;letter-spacing:-.1px;
+  text-shadow:0 1px 0 #ffffff66;word-break:normal}
 
 /* whiteboard */
 #wb{position:absolute;right:4.4%;left:4.3%;top:17.75%;height:30.4%;
@@ -242,7 +269,9 @@ html,body{margin:0;height:100%;overflow:hidden;background:#e9edf2;
 
 /* three-line transcript */
 #tx{position:absolute;right:10%;left:6.9%;top:56.5%;height:12%;
-  display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden;padding:0 1.6%}
+  display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden;
+  padding:0 2%;-webkit-mask-image:linear-gradient(#0000,#000 12%,#000 88%,#0000);
+  mask-image:linear-gradient(#0000,#000 12%,#000 88%,#0000)}
 #txin{will-change:transform;transition:transform .36s cubic-bezier(.3,.72,.3,1)}
 #tx .l{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;
   color:#8a929c;font-weight:700;opacity:0;transition:color .28s,opacity .28s}
@@ -258,6 +287,10 @@ html,body{margin:0;height:100%;overflow:hidden;background:#e9edf2;
 .btn svg{width:54%;height:54%;fill:currentColor}
 .btn.main{width:3.45em;height:3.45em;background:#1f6fd1;color:#fff;box-shadow:0 2px 7px #1f6fd155}
 .btn:active{transform:translateY(1px)}
+#rate{flex:0 0 auto;width:3.4em;height:2.5em;border:0;border-radius:13px;
+  background:#ffffffdf;color:#123a72;font-family:inherit;font-weight:800;font-size:.66em;
+  text-align:center;text-align-last:center;appearance:none;cursor:pointer;
+  box-shadow:0 1px 3px #0002,inset 0 -2px 0 #0000000f;padding:0 .2em}
 #sel{flex:1 1 auto;min-width:0;height:2.5em;border:0;border-radius:13px;
   background:#ffffffdf;color:#123a72;font-family:inherit;font-weight:700;font-size:.72em;
   padding:0 26px 0 .7em;text-overflow:ellipsis;appearance:none;cursor:pointer;
@@ -278,10 +311,15 @@ html,body{margin:0;height:100%;overflow:hidden;background:#e9edf2;
   <div id="wb"><div class="frame"><div id="board"><div class="page"></div></div><div class="tray" style="display:none"></div></div></div>
   <div id="tx"><div id="txin"></div></div>
   <div id="ct">
-    <button class="btn" id="pv" aria-label="بخش قبل"><svg viewBox="0 0 24 24"><path d="M18 5v14l-9-7zM7 5h2v14H7z"/></svg></button>
-    <button class="btn main" id="pp" aria-label="پخش"><svg viewBox="0 0 24 24" id="ic"><path d="M8 5v14l11-7z"/></svg></button>
     <button class="btn" id="nx" aria-label="بخش بعد"><svg viewBox="0 0 24 24"><path d="M6 5v14l9-7zM15 5h2v14h-2z"/></svg></button>
+    <button class="btn main" id="pp" aria-label="پخش"><svg viewBox="0 0 24 24" id="ic"><path d="M8 5v14l11-7z"/></svg></button>
+    <button class="btn" id="pv" aria-label="بخش قبل"><svg viewBox="0 0 24 24"><path d="M18 5v14l-9-7zM7 5h2v14H7z"/></svg></button>
     <select id="sel" aria-label="بخش‌ها"></select>
+    <select id="rate" aria-label="سرعت پخش">
+      <option value="0.5">۰٫۵×</option><option value="0.75">۰٫۷۵×</option>
+      <option value="1" selected>۱×</option><option value="1.25">۱٫۲۵×</option>
+      <option value="1.5">۱٫۵×</option><option value="2">۲×</option>
+    </select>
     <span id="time">0:00</span>
   </div>
 </div>
@@ -397,8 +435,8 @@ function buildLines(){
   var w = (tx.clientWidth || 300) * 0.96;
   /* the artwork panel has three ruled rows between 56.6% and 65.6% of its height */
   var Hpx = stage.clientHeight || 800;
-  lineH = Math.max(14, Math.round(Hpx * (65.64 - 56.56) / 200));   /* = row span */
-  var base = Math.max(10.5, Math.min(19, lineH * 0.58));
+  lineH = Math.max(13, Math.round(Hpx * (65.64 - 56.56) / 200));   /* = row span */
+  var base = Math.max(9.5, Math.min(17, lineH * 0.52));            /* a touch smaller */
   var maxChars = Math.max(13, Math.floor(w / (base * 0.55)));
   var out = [];
   for (var i = 0; i < M_LINES.length; i++){
@@ -462,15 +500,21 @@ function setIcon(on){
 }
 function fitTitle(){
   var el = q('title'), sp = el.querySelector('span');
-  if (!el.clientWidth){ el.style.fontSize = (17 * u) + 'px'; return; }
-  var size = 22 * u;
-  el.style.fontSize = size + 'px';
+  if (!el.clientWidth){ el.style.fontSize = (14 * u) + 'px'; return; }
+  var H = el.clientHeight, W = el.clientWidth - 6;
+  var size = Math.min(16 * u, H / 2.35);             /* two small lines must fit */
   var guard = 0;
-  while (guard++ < 40 && (sp.scrollWidth > el.clientWidth - 8 || sp.scrollHeight > el.clientHeight - 2)){
-    size *= 0.94;
+  while (guard++ < 40){
     el.style.fontSize = size.toFixed(2) + 'px';
-    if (size < 8) break;
+    sp.style.webkitLineClamp = 'unset';              /* measure the real height */
+    sp.style.display = 'block';
+    var need = sp.scrollHeight, wide = sp.scrollWidth;
+    sp.style.display = '-webkit-box';
+    sp.style.webkitLineClamp = '2';
+    if ((need <= H + 1 && wide <= W + 1) || size < 7) break;
+    size *= 0.95;
   }
+  el.style.fontSize = size.toFixed(2) + 'px';
 }
 function tick(){
   var t = au.currentTime || 0;
@@ -514,6 +558,23 @@ function layout(){
   })();
 })();
 q('pp').onclick = function(){ au.paused ? au.play() : au.pause(); };
+var rateSel = q('rate');
+function applyRate(){
+  var r = parseFloat(rateSel.value) || 1;
+  try { au.playbackRate = r; au.defaultPlaybackRate = r; } catch (e) {}
+  try { localStorage.setItem('mrate', String(r)); } catch (e) {}
+}
+rateSel.onchange = applyRate;
+try {
+  var savedRate = localStorage.getItem('mrate');
+  if (savedRate && rateSel.querySelector('option[value="' + savedRate + '"]')) rateSel.value = savedRate;
+} catch (e) {}
+applyRate();
+au.addEventListener('loadedmetadata', applyRate);
+au.addEventListener('play', applyRate);
+au.addEventListener('ratechange', function(){
+  if (Math.abs((au.playbackRate || 1) - (parseFloat(rateSel.value) || 1)) > 0.01) applyRate();
+});
 au.addEventListener('play', function(){ setIcon(true); });
 au.addEventListener('pause', function(){ setIcon(false); });
 au.addEventListener('ended', function(){ setIcon(false); });
@@ -545,7 +606,7 @@ a{display:block;text-decoration:none;color:inherit;background:#182a44;border:1px
  border-radius:16px;padding:14px 16px;margin:10px 0}
 a b{font-size:15px}a span{display:block;color:#9fb2c9;font-size:12px}
 </style></head><body>
-<h1>فصل ۱ ریاضی نهم</h1>
+<h1>__HEAD__</h1>
 __ITEMS__
 </body></html>
 """
@@ -605,20 +666,62 @@ def build(folder, base, bg_png, bitrate=32000, quality=82, out_dir=None):
     return out, title, timing
 
 
-def build_index(folder, out_dir, rows):
+def build_index(folder, out_dir, rows, heading=None):
     items = []
     for base, title, timing in rows:
         items.append(f'<a href="{base}.html"><b>{esc(title)}</b>'
                      f'<span>{mmss(timing["stats"]["duration"])} · '
                      f'{len(timing["sections"])} بخش</span></a>')
+    head = heading or os.path.basename(os.path.abspath(folder))
     open(os.path.join(out_dir, 'index.html'), 'w', encoding='utf-8').write(
-        INDEX.replace('__ITEMS__', '\n'.join(items)))
+        INDEX.replace('__ITEMS__', '\n'.join(items)).replace('__HEAD__', esc(head)))
     print(os.path.join(out_dir, 'index.html'))
 
 
 REPO = os.path.dirname(HERE)
+HUB = """<!DOCTYPE html>
+<html lang="fa" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>ریاضی نهم</title>
+<style>
+body{margin:0;padding:26px 18px;background:#0f1a2b;color:#eaf0f7;
+ font-family:Vazirmatn,Tahoma,system-ui;line-height:1.9}
+h1{font-size:19px;margin:0 0 4px}p{color:#9fb2c9;font-size:12px;margin:0 0 18px}
+a{display:block;text-decoration:none;color:inherit;background:#182a44;border:1px solid #ffffff1a;
+ border-radius:16px;padding:14px 16px;margin:10px 0}
+a b{font-size:15px}a span{display:block;color:#9fb2c9;font-size:12px}
+</style></head><body>
+<h1>ریاضی نهم — وایت‌بورد همگام با صدا</h1>
+<p>هر درس یک فایل مستقل و آفلاین</p>
+__ITEMS__
+</body></html>
+"""
+
 CANON_BOARD = os.path.join(REPO, 'G09/G09-Math/F01/0101.html')
 DEFAULT_BG = os.path.join(REPO, 'Cheerful Persian Study Classroom Interface.png')
+
+def build_hub(book_dir):
+    """G09/G09-Math/index.html -> one card per chapter that has a mobile/ folder"""
+    items = []
+    for d in sorted(glob.glob(os.path.join(book_dir, '*', 'mobile', 'index.html'))):
+        ch = os.path.basename(os.path.dirname(os.path.dirname(d)))
+        rel = os.path.relpath(d, book_dir)
+        ch_dir = os.path.dirname(os.path.dirname(d))
+        meta = ''
+        try:
+            import json as _json
+            files = glob.glob(os.path.join(ch_dir, '*.timing.json'))
+            tot = sum(_json.load(open(pp, encoding='utf-8'))['stats']['duration'] for pp in files)
+            meta = f'{len(files)} درس · {mmss(tot)}'
+        except Exception:
+            pass
+        name = 'فصل ۱' if ch.endswith('F01') else 'فصل ۲' if ch.endswith('F02') else ch
+        items.append(f'<a href="{rel}"><b>{name}</b><span>{ch} · {meta}</span></a>')
+    if not items:
+        return
+    out = os.path.join(book_dir, 'index.html')
+    open(out, 'w', encoding='utf-8').write(HUB.replace('__ITEMS__', '\n'.join(items)))
+    print(out)
+
 
 if __name__ == '__main__':
     ap = argparse.ArgumentParser()
@@ -627,6 +730,7 @@ if __name__ == '__main__':
     ap.add_argument('--bitrate', type=int, default=32000)
     ap.add_argument('--quality', type=int, default=82)
     ap.add_argument('--out', default=None)
+    ap.add_argument('--heading', default=None, help='title of the index page')
     a = ap.parse_args()
 
     if os.path.isdir(a.target):
@@ -637,7 +741,9 @@ if __name__ == '__main__':
             base = os.path.splitext(os.path.basename(p))[0]
             out, title, timing = build(folder, base, bg, a.bitrate, a.quality, a.out)
             rows.append((base, title, timing))
-        build_index(folder, a.out or os.path.join(folder, 'mobile'), rows)
+        out_dir = a.out or os.path.join(folder, 'mobile')
+        build_index(folder, out_dir, rows, a.heading or chapter_of(rows, folder) or None)
+        build_hub(os.path.dirname(os.path.abspath(folder.rstrip('/'))))
     else:
         folder = os.path.dirname(os.path.abspath(a.target)) or '.'
         base = os.path.splitext(os.path.basename(a.target))[0]
