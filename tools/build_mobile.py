@@ -45,24 +45,27 @@ def mmss(t):
 
 
 # ------------------------------------------------------------------- audio ----
-def opus_bytes(ogg, bitrate=32000):
-    """32 kbit/s opus of the narration, cached in ~/.cache so rebuilds are fast"""
+def audio_bytes(ogg, bitrate=32000, sr=22050):
+    """AAC-LC in MP4 (universal: iOS Safari, Chrome, Firefox, Edge).
+
+    Cached in ~/.cache so rebuilds are instant.
+    """
     import hashlib
     cache = os.path.join(os.path.expanduser('~'), '.cache', 'board-sync')
     os.makedirs(cache, exist_ok=True)
-    key = hashlib.md5(f'{os.path.abspath(ogg)}|{os.path.getmtime(ogg)}|{bitrate}'.encode()).hexdigest()[:12]
-    path = os.path.join(cache, os.path.basename(ogg).replace('.ogg', f'-{bitrate // 1000}k-{key}.ogg'))
+    key = hashlib.md5(f'{os.path.abspath(ogg)}|{os.path.getmtime(ogg)}|{bitrate}|{sr}'.encode()).hexdigest()[:12]
+    path = os.path.join(cache, os.path.basename(ogg).replace('.ogg', f'-aac{bitrate // 1000}k-{key}.m4a'))
     if os.path.exists(path):
         return open(path, 'rb').read()
     import av
     src = av.open(ogg)
     st_in = src.streams.audio[0]
-    tmp = tempfile.NamedTemporaryFile(suffix='.ogg', delete=False)
+    tmp = tempfile.NamedTemporaryFile(suffix='.m4a', delete=False)
     tmp.close()
-    out = av.open(tmp.name, 'w', format='ogg')
-    st = out.add_stream('libopus', rate=16000, layout='mono')
+    out = av.open(tmp.name, 'w', format='ipod')
+    st = out.add_stream('aac', rate=sr, layout='mono')
     st.bit_rate = bitrate
-    res = av.AudioResampler(format='fltp', layout='mono', rate=16000)
+    res = av.AudioResampler(format='fltp', layout='mono', rate=sr)
     for fr in src.decode(st_in):
         for o in res.resample(fr):
             o.pts = None
@@ -181,11 +184,9 @@ PAGE = r"""<!DOCTYPE html>
 html,body{margin:0;height:100%;overflow:hidden;background:#0f1a2b;
   font-family:Vazirmatn,Tahoma,system-ui,sans-serif;user-select:none;
   -webkit-user-select:none;touch-action:manipulation;-webkit-text-size-adjust:100%}
-body::before{content:"";position:fixed;inset:-8%;z-index:0;
-  background:var(--bg) center/cover no-repeat;filter:blur(16px) brightness(.5)}
-#stage{position:fixed;inset:0;margin:auto;z-index:1;
-  width:min(100vw,calc(100vh*901/1746));height:min(100vh,calc(100vw*1746/901));
-  width:min(100vw,calc(100dvh*901/1746));height:min(100dvh,calc(100vw*1746/901));
+/* the artwork IS the page: full bleed, no bars, every overlay sits on it */
+#stage{position:fixed;inset:0;z-index:1;
+  width:100vw;height:100vh;height:100dvh;
   background:var(--bg) center/100% 100% no-repeat}
 
 /* title */
@@ -367,9 +368,10 @@ function indexIn(k, t){
 /* transcript: exactly three visible rows, the current one in the middle */
 function buildLines(){
   var w = (tx.clientWidth || 300) * 0.96;
-  var base = Math.max(11, Math.min(19, w / 17.5));
-  var maxChars = Math.max(14, Math.floor(w / (base * 0.54)));
-  lineH = Math.round(base * 1.66);
+  var boxH = Math.max(36, (stage.clientHeight || 800) * 0.128);   /* the artwork panel */
+  var base = Math.max(10.5, Math.min(19, w / 17.5));
+  var maxChars = Math.max(13, Math.floor(w / (base * 0.54)));
+  lineH = Math.max(12, Math.min(Math.round(base * 1.66), Math.floor(boxH / 3)));
   var out = [];
   for (var i = 0; i < M_LINES.length; i++){
     var L = M_LINES[i], t = String(L.text).replace(/\s+/g, ' ').trim();
@@ -400,6 +402,7 @@ function buildLines(){
     linesEls.push(d);
   }
   tx.style.height = tx.style.minHeight = (lineH * 3) + 'px';
+  tx.style.lineHeight = lineH + 'px';
   curLine = -1;
 }
 function showLine(i){
@@ -466,7 +469,7 @@ function layout(){
 (function boot(){
   try {
     au.src = URL.createObjectURL(new Blob([b64(document.getElementById('audio-data').textContent)],
-                                          {type: 'audio/ogg'}));
+                                          {type: 'audio/mp4'}));
   } catch (e) {}
   pgEl.appendChild(pn);
   buildSelect();
@@ -548,7 +551,7 @@ def build(folder, base, bg_png, bitrate=32000, quality=82, out_dir=None):
 
     lines = [{'t': s['t'], 'e': max(s['t'] + 0.4, s['end']), 'text': s['text']}
              for s in timing['sentences']]
-    audio = b64(opus_bytes(os.path.join(folder, base + '.ogg'), bitrate))
+    audio = b64(audio_bytes(os.path.join(folder, base + '.ogg'), bitrate))
     bg = b64(bg_jpeg(bg_png, quality=quality), width=76)
 
     page = (PAGE
@@ -564,7 +567,8 @@ def build(folder, base, bg_png, bitrate=32000, quality=82, out_dir=None):
             .replace('__DUR__', str(round(timing['stats']['duration'], 2))))
     out = os.path.join(out_dir, base + '.html')
     open(out, 'w', encoding='utf-8').write(page)
-    print(f'{out}  ({os.path.getsize(out) / 1e6:.1f} MB)  {len(segs)} بخش  bg {len(bg)//1024}KB')
+    print(f'{out}  ({os.path.getsize(out) / 1e6:.1f} MB)  {len(segs)} بخش  '
+          f'bg {len(bg) // 1024}KB  audio {len(audio_bytes(os.path.join(folder, base + ".ogg"), bitrate)) // 1024}KB')
     return out, title, timing
 
 
@@ -579,7 +583,9 @@ def build_index(folder, out_dir, rows):
     print(os.path.join(out_dir, 'index.html'))
 
 
-CANON_BOARD = os.path.join(os.path.dirname(HERE), 'G09/G09-Math/F01/0101.html')
+REPO = os.path.dirname(HERE)
+CANON_BOARD = os.path.join(REPO, 'G09/G09-Math/F01/0101.html')
+DEFAULT_BG = os.path.join(REPO, 'Cheerful Persian Study Classroom Interface.png')
 
 if __name__ == '__main__':
     ap = argparse.ArgumentParser()
@@ -592,7 +598,7 @@ if __name__ == '__main__':
 
     if os.path.isdir(a.target):
         folder = a.target
-        bg = a.bg or os.path.join(folder, 'mobile', 'bg-source.png')
+        bg = a.bg or DEFAULT_BG
         rows = []
         for p in sorted(glob.glob(os.path.join(folder, '*.ogg'))):
             base = os.path.splitext(os.path.basename(p))[0]
@@ -602,5 +608,5 @@ if __name__ == '__main__':
     else:
         folder = os.path.dirname(os.path.abspath(a.target)) or '.'
         base = os.path.splitext(os.path.basename(a.target))[0]
-        bg = a.bg or os.path.join(folder, 'mobile', 'bg-source.png')
+        bg = a.bg or DEFAULT_BG
         build(folder, base, bg, a.bitrate, a.quality, a.out)
