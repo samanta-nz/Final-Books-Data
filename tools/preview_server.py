@@ -18,6 +18,11 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         pass
 
     def do_GET(self):
+        if self.path in ('/', '/index.html') and os.path.exists('sync-player.html'):
+            self.send_response(302)
+            self.send_header('Location', '/sync-player.html')
+            self.end_headers()
+            return
         rng = self.headers.get('Range')
         path = self.translate_path(self.path)
         if not rng or not os.path.isfile(path):
