@@ -1,0 +1,110 @@
+[
+  {
+    "chapter": "F01",
+    "name": "01-review.html",
+    "issues": [],
+    "formulas": 243,
+    "figures": 8,
+    "mime": "blob:http://127.0.0.1:8877/17b3b9c7-3b08-4bf6-b629-931f35b9cd41",
+    "duration": 1363.472,
+    "font": "Vazir, Vazirmatn, Tahoma, sans-serif",
+    "seekDelta": 5,
+    "errors": []
+  },
+  {
+    "chapter": "F01",
+    "name": "0101.html",
+    "issues": [],
+    "formulas": 201,
+    "figures": 13,
+    "mime": "blob:http://127.0.0.1:8877/b4080be6-62e9-470d-a822-9af16cfbbf84",
+    "duration": 1679.072,
+    "font": "Vazir, Vazirmatn, Tahoma, sans-serif",
+    "seekDelta": 5,
+    "errors": []
+  },
+  {
+    "chapter": "F01",
+    "name": "0102.html",
+    "issues": [],
+    "formulas": 254,
+    "figures": 16,
+    "mime": "blob:http://127.0.0.1:8877/523fec0a-3cfc-4af2-8481-c4c12fbc4a13",
+    "duration": 1574.032,
+    "font": "Vazir, Vazirmatn, Tahoma, sans-serif",
+    "seekDelta": 5,
+    "errors": []
+  },
+  {
+    "chapter": "F01",
+    "name": "0103.html",
+    "issues": [],
+    "formulas": 316,
+    "figures": 33,
+    "mime": "blob:http://127.0.0.1:8877/41bd39be-cbff-4383-94c8-d132a12997eb",
+    "duration": 1510.952,
+    "font": "Vazir, Vazirmatn, Tahoma, sans-serif",
+    "seekDelta": 5,
+    "errors": []
+  },
+  {
+    "chapter": "F01",
+    "name": "0104.html",
+    "issues": [],
+    "formulas": 210,
+    "figures": 15,
+    "mime": "blob:http://127.0.0.1:8877/7405cd86-d8c5-49c1-b5f1-a99ec65b9166",
+    "duration": 1329.792,
+    "font": "Vazir, Vazirmatn, Tahoma, sans-serif",
+    "seekDelta": 5,
+    "errors": []
+  },
+  {
+    "chapter": "F02",
+    "name": "02-review.html",
+    "issues": [],
+    "formulas": 402,
+    "figures": 119,
+    "mime": "blob:http://127.0.0.1:8877/75806262-3dd1-489c-82ca-14a75d525698",
+    "duration": 1397.392,
+    "font": "Vazir, Vazirmatn, Tahoma, sans-serif",
+    "seekDelta": 5,
+    "errors": []
+  },
+  {
+    "chapter": "F02",
+    "name": "0201.html",
+    "issues": [],
+    "formulas": 374,
+    "figures": 15,
+    "mime": "blob:http://127.0.0.1:8877/e42c094a-a520-44f7-bb02-68aff0e97e30",
+    "duration": 1402.392,
+    "font": "Vazir, Vazirmatn, Tahoma, sans-serif",
+    "seekDelta": 5,
+    "errors": []
+  },
+  {
+    "chapter": "F02",
+    "name": "0202.html",
+    "issues": [],
+    "formulas": 329,
+    "figures": 190,
+    "mime": "blob:http://127.0.0.1:8877/a615e986-90e7-48b1-8657-ea904b987b33",
+    "duration": 1356.752,
+    "font": "Vazir, Vazirmatn, Tahoma, sans-serif",
+    "seekDelta": 5,
+    "errors": []
+  },
+  {
+    "chapter": "F02",
+    "name": "0203.html",
+    "issues": [],
+    "formulas": 333,
+    "figures": 97,
+    "mime": "blob:http://127.0.0.1:8877/c9332f4c-a331-44db-bc0f-80c5c96b57b1",
+    "duration": 1334.392,
+    "font": "Vazir, Vazirmatn, Tahoma, sans-serif",
+    "seekDelta": 5,
+    "errors": []
+  }
+]

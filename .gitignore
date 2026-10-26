@@ -1,3 +1,7 @@
 __pycache__/
 *.pyc
 .venv/
+
+# Generated lesson bundles and resumable alignment cache
+output/
+.cache/mobile-alignment/

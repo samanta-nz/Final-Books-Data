@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f1a2b">
+<title>__TITLE__</title>
+<style>__FONTS__</style>
+<style>__MATHCSS__</style>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;font-family:Vazirmatn,Tahoma,sans-serif;background:#eef1f4}
+#bg{position:fixed;inset:0;width:100%;height:100%;object-fit:fill;pointer-events:none}
+#stage{position:fixed;inset:0;height:100dvh;--u:1}
+#title{position:absolute;left:20.4%;right:19.8%;top:5.27%;height:6.76%;padding:0 3%;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#title span{font-weight:900;color:#123a72;text-align:center;font-size:clamp(11px,3.5vw,17px);line-height:1.25;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+#wb{position:absolute;left:4.3%;right:4.4%;top:17.75%;height:30.4%;padding:3px 8px;display:flex;flex-direction:column;min-height:0}
+#board{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;touch-action:pan-y;scrollbar-width:thin;scrollbar-color:#87a7bb transparent}
+#board .page{font-size:clamp(11px,3.2vw,16px);line-height:1.65;color:#111827;padding:0 2px 3px;font-family:Vazir,Vazirmatn,Tahoma,sans-serif;font-weight:700}
+.board-title{font-family:Vazir,Vazirmatn,Tahoma,sans-serif;font-weight:700;font-size:1.14em;color:#166534;margin:0 0 3px;text-align:center;line-height:1.3}
+.note{margin:3px 0;padding-right:9px;position:relative;overflow-wrap:anywhere;color:#111827;font-weight:700}
+.note:before{content:'•';position:absolute;right:0;color:#15803d}
+.note.current{color:#b91c1c;font-weight:700}.note .math{color:#1d4ed8}.note strong,.note b{color:#166534}
+.math{font-family:Vazir,Vazirmatn,Tahoma,sans-serif;font-weight:700;unicode-bidi:isolate;direction:ltr;overflow-wrap:anywhere}
+.diagram{height:70px;margin:2px 0 4px;direction:ltr}.diagram svg{width:100%;height:100%;display:block;overflow:visible}
+.diagram text{font-family:Vazir,Vazirmatn,Tahoma,sans-serif;font-weight:700;fill:#1d4ed8;direction:ltr;unicode-bidi:plaintext}
+#board-nav{font-family:Vazir,Vazirmatn,Tahoma;font-weight:700;display:flex;align-items:center;justify-content:center;gap:9px;min-height:19px;font-size:10px;color:#456075}
+#board-nav[hidden]{display:none}#board-nav button{font-family:inherit;border:0;background:#eef5fc;border-radius:5px;color:#164a89;font-size:12px;padding:0 8px;cursor:pointer}
+#board-nav button:disabled{opacity:.3}
+#tx{position:absolute;left:6.9%;right:10%;overflow:hidden;padding:0 2%;mask-image:linear-gradient(transparent,#000 10%,#000 90%,transparent)}
+#txin{transition:transform .15s linear;will-change:transform}
+.caption-line{white-space:nowrap;text-align:center;color:#66788c;font-weight:700;overflow:hidden;text-overflow:ellipsis;opacity:0;visibility:hidden}
+.caption-line.show{opacity:.65;visibility:visible}.caption-line.cur{opacity:1;visibility:visible;color:#123a72;font-weight:900}
+#ct{position:absolute;left:9%;right:9.3%;top:87.7%;height:6.9%;display:flex;align-items:center;gap:2.4%;font-size:clamp(10px,3.2vw,15px)}
+.btn{flex:0 0 auto;width:2.85em;height:2.85em;border:0;border-radius:50%;background:#fffffff0;color:#123a72;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 3px #0002}
+.btn svg{width:54%;height:54%;fill:currentColor}.btn.main{width:3.105em;height:3.105em;background:#1f6fd1;color:white}
+select{font-family:inherit;border:0;border-radius:13px;background:#fffffff0;color:#123a72;font-weight:700;height:2.5em;min-width:0;font-size:.74em}
+#sel{flex:1 1 auto;padding:0 3px}#rate{flex:0 0 auto;width:3.4em;font-size:.7em;text-align:center}
+#time{flex:0 0 auto;direction:ltr;font-size:.72em;color:#123a72;font-weight:800}
+@media (orientation:landscape){.diagram{height:48px}#board .page{font-size:11px}}
+
+#seek-panel{position:absolute;left:9%;right:9.3%;top:83.9%;height:3.5%;display:flex;align-items:center;gap:8px;direction:ltr;color:#123a72;font-size:10px;font-family:Vazirmatn,Tahoma}
+#seek{flex:1;min-width:0;height:28px;accent-color:#1d4ed8;cursor:pointer;touch-action:pan-x}
+#seek-status{background:#fff;border-radius:5px;padding:2px 4px;white-space:nowrap;font-variant-numeric:tabular-nums}
+#nx,#pv{position:relative;touch-action:none;user-select:none;-webkit-user-select:none}
+.seek-badge{position:absolute;bottom:-5px;font:700 9px Vazirmatn,Tahoma;background:white;border-radius:4px;padding:0 3px;color:#123a72;direction:ltr}
+#nx.holding,#pv.holding{background:#dbeafe}
+</style>
+</head>
+<body>
+<img id="bg" alt="" src="data:image/jpeg;base64,__BG__">
+<main id="stage">
+  <header id="title"><span>__TITLE__</span></header>
+  <section id="wb" aria-label="نکته‌های درس">
+    <div id="board"><div class="page"></div></div>
+    <nav id="board-nav" aria-label="صفحه‌های تخته" hidden>
+      <button id="board-prev" aria-label="صفحهٔ قبلی تخته">‹</button><span id="board-page"></span><button id="board-next" aria-label="صفحهٔ بعدی تخته">›</button>
+    </nav>
+  </section>
+  <section id="tx" aria-label="متن گفتار"><div id="txin"></div></section>
+  <div id="seek-panel"><input id="seek" type="range" min="0" max="1" value="0" step="0.1" aria-label="جابه‌جایی زمان پخش"><span id="seek-status">۰:۰۰ / ۰:۰۰</span></div>
+  <nav id="ct" aria-label="کنترل پخش">
+    <button class="btn" id="nx" aria-label="بخش بعد؛ نگه داشتن: پنج ثانیه جلو" title="بخش بعد؛ نگه دارید: ۵ ثانیه جلو"><svg viewBox="0 0 24 24"><path d="M5 5v14l10-7zM17 5h2v14h-2z"/></svg><span class="seek-badge">+۵</span></button>
+    <button class="btn main" id="pp" aria-label="پخش"><svg viewBox="0 0 24 24" id="ic"><path d="M8 5v14l11-7z"/></svg></button>
+    <button class="btn" id="pv" aria-label="بخش قبل؛ نگه داشتن: پنج ثانیه عقب" title="بخش قبل؛ نگه دارید: ۵ ثانیه عقب"><svg viewBox="0 0 24 24"><path d="M19 5v14L9 12zM5 5h2v14H5z"/></svg><span class="seek-badge">−۵</span></button>
+    <select id="sel" aria-label="بخش‌های درس"></select>
+    <select id="rate" aria-label="سرعت پخش"><option value="0.5">۰٫۵×</option><option value="0.75">۰٫۷۵×</option><option value="1" selected>۱×</option><option value="1.25">۱٫۲۵×</option><option value="1.5">۱٫۵×</option><option value="2">۲×</option></select>
+    <span id="time">۰:۰۰</span>
+  </nav>
+</main>
+<audio id="au" preload="auto"></audio>
+<script id="audio-data" type="application/octet-stream">__AUDIO__</script>
+<script>__MATHJS__</script>
+<script>
+var M_SEGS=__SEGS__, M_SOURCE=__LINES__, M_BOARDS=__BOARDS__, M_DUR=__DUR__, M_CUTS=__CUTS__;
+__PLAYER__
+</script>
+</body></html>

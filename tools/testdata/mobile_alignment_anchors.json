@@ -1,0 +1,65 @@
+[
+  {
+    "lesson": "F01/01-review",
+    "text": "هیچ‌کدوم از عضوهای مشترک وارد تفاضل‌ها نمی‌شن.",
+    "approximate_audio_start": 673.72,
+    "old_error_s": 20.19,
+    "source": "independent 25-second ASR sample from audit; approximate word onset"
+  },
+  {
+    "lesson": "F01/0101",
+    "text": "در نتیجه هیچ عددی پیدا نمی‌شه که هم دورقمی باشه، هم زوج و هم اوّل.",
+    "approximate_audio_start": 840.4,
+    "old_error_s": 8.37,
+    "source": "independent 25-second ASR sample from audit; approximate word onset"
+  },
+  {
+    "lesson": "F01/0102",
+    "text": "یه توضیح تکمیلی برای این تعداد هم هست.",
+    "approximate_audio_start": 780.94,
+    "old_error_s": 5.62,
+    "source": "independent 25-second ASR sample from audit; approximate word onset"
+  },
+  {
+    "lesson": "F01/0103",
+    "text": "برای تفاضل، اول کنترل می‌کنم همهٔ عضوهای جواب در مجموعهٔ اول باشن.",
+    "approximate_audio_start": 1447.72,
+    "old_error_s": 14.05,
+    "source": "independent 25-second ASR sample from audit; approximate word onset"
+  },
+  {
+    "lesson": "F01/0104",
+    "text": "برای آبی بودن، چهار مهرهٔ مطلوب داریم.",
+    "approximate_audio_start": 664.78,
+    "old_error_s": 9.72,
+    "source": "independent 25-second ASR sample from audit; approximate word onset"
+  },
+  {
+    "lesson": "F02/02-review",
+    "text": "خود قدر مطلق، چهار داده بود و منفی بیرونی نتیجه رو قرینه کرد.",
+    "approximate_audio_start": 691.98,
+    "old_error_s": 8.88,
+    "source": "independent 25-second ASR sample from audit; approximate word onset"
+  },
+  {
+    "lesson": "F02/0201",
+    "text": "وقتی یه عددِ دقیقاً میانی می‌خوایم، میانگین مستقیم به همون هدف می‌رسه.",
+    "approximate_audio_start": 1353.02,
+    "old_error_s": 4.69,
+    "source": "independent 25-second ASR sample from audit; approximate word onset"
+  },
+  {
+    "lesson": "F02/0202",
+    "text": "هر چهار حاصل گنگن و از مرز پایین بزرگ‌ترن.",
+    "approximate_audio_start": 672.14,
+    "old_error_s": 21.3,
+    "source": "independent 25-second ASR sample from audit; approximate word onset"
+  },
+  {
+    "lesson": "F02/0203",
+    "text": "عبارت داخل دومی منفیه.",
+    "approximate_audio_start": 658.08,
+    "old_error_s": 16.01,
+    "source": "independent 25-second ASR sample from audit; approximate word onset"
+  }
+]

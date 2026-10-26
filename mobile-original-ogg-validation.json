@@ -1,0 +1,47 @@
+[
+  {
+    "lesson": "0202",
+    "sha256": "3c3ff841d837c5a827778b1f3623aef821bdc206fd53f3ba3fd9707f695f369a",
+    "original_ogg_exact": true
+  },
+  {
+    "lesson": "02-review",
+    "sha256": "200e80e517c629461add91e541d0e34545071ef44980430afcfa03c89f80d798",
+    "original_ogg_exact": true
+  },
+  {
+    "lesson": "0201",
+    "sha256": "1053d6669e9ab2bb90ece416be03af6ccf12392fa39b28f4d9e0ba97de848140",
+    "original_ogg_exact": true
+  },
+  {
+    "lesson": "0203",
+    "sha256": "af19762591b6433b91c611aced93c929f2fe58597ca6e465f059fae55cbcd93f",
+    "original_ogg_exact": true
+  },
+  {
+    "lesson": "0102",
+    "sha256": "6bd4bc65e0490b7a4a1f134faa58af1a4bbd499f1deac71593d727b0f20c8163",
+    "original_ogg_exact": true
+  },
+  {
+    "lesson": "01-review",
+    "sha256": "bcd2cc5df75280b49043d0f55743173ce3d53a6df558b19df34a4b3697c1765b",
+    "original_ogg_exact": true
+  },
+  {
+    "lesson": "0101",
+    "sha256": "65aec0432e1e2c1a7d29d650cdef7a2bbc88e8d5efeb788e13bd9ed3321f910a",
+    "original_ogg_exact": true
+  },
+  {
+    "lesson": "0103",
+    "sha256": "aba1cbafd4e49a705f789d63bee2805bc89af1734c217cf43a2a1baa62216c2c",
+    "original_ogg_exact": true
+  },
+  {
+    "lesson": "0104",
+    "sha256": "07d8324f73c11594e34ca16d7dd89fdaed1aefacfd41d95e13a1f59c180c46ad",
+    "original_ogg_exact": true
+  }
+]

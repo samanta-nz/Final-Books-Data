@@ -1,0 +1,47 @@
+[
+  {
+    "lesson": "F01/01-review",
+    "old_error_s": 20.19,
+    "new_error_s": 0.187
+  },
+  {
+    "lesson": "F01/0101",
+    "old_error_s": 8.37,
+    "new_error_s": 0.367
+  },
+  {
+    "lesson": "F01/0102",
+    "old_error_s": 5.62,
+    "new_error_s": 0.223
+  },
+  {
+    "lesson": "F01/0103",
+    "old_error_s": 14.05,
+    "new_error_s": 0.12
+  },
+  {
+    "lesson": "F01/0104",
+    "old_error_s": 9.72,
+    "new_error_s": 0.045
+  },
+  {
+    "lesson": "F02/02-review",
+    "old_error_s": 8.88,
+    "new_error_s": 0.038
+  },
+  {
+    "lesson": "F02/0201",
+    "old_error_s": 4.69,
+    "new_error_s": 0.074
+  },
+  {
+    "lesson": "F02/0202",
+    "old_error_s": 21.3,
+    "new_error_s": 0.09
+  },
+  {
+    "lesson": "F02/0203",
+    "old_error_s": 16.01,
+    "new_error_s": 0.162
+  }
+]

@@ -1,0 +1,6 @@
+numpy
+pillow
+rapidfuzz
+faster-whisper
+playwright
+av

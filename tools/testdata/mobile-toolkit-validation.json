@@ -1,0 +1,254 @@
+[
+  {
+    "lesson": "G09/G09-Math/F01/mobile/01-review.html",
+    "viewport": [
+      390,
+      844
+    ],
+    "states": 57,
+    "problems": [],
+    "font": "Vazir, Vazirmatn, Tahoma, sans-serif",
+    "original_ogg_sha256": "bcd2cc5df75280b49043d0f55743173ce3d53a6df558b19df34a4b3697c1765b",
+    "controls": "passed",
+    "three_row_captions": "passed",
+    "external_requests": []
+  },
+  {
+    "lesson": "G09/G09-Math/F01/mobile/01-review.html",
+    "viewport": [
+      360,
+      640
+    ],
+    "states": 57,
+    "problems": [],
+    "font": "Vazir, Vazirmatn, Tahoma, sans-serif",
+    "original_ogg_sha256": "bcd2cc5df75280b49043d0f55743173ce3d53a6df558b19df34a4b3697c1765b",
+    "controls": "passed",
+    "three_row_captions": "passed",
+    "external_requests": []
+  },
+  {
+    "lesson": "G09/G09-Math/F01/mobile/0101.html",
+    "viewport": [
+      390,
+      844
+    ],
+    "states": 93,
+    "problems": [],
+    "font": "Vazir, Vazirmatn, Tahoma, sans-serif",
+    "original_ogg_sha256": "65aec0432e1e2c1a7d29d650cdef7a2bbc88e8d5efeb788e13bd9ed3321f910a",
+    "controls": "passed",
+    "three_row_captions": "passed",
+    "external_requests": []
+  },
+  {
+    "lesson": "G09/G09-Math/F01/mobile/0101.html",
+    "viewport": [
+      360,
+      640
+    ],
+    "states": 93,
+    "problems": [],
+    "font": "Vazir, Vazirmatn, Tahoma, sans-serif",
+    "original_ogg_sha256": "65aec0432e1e2c1a7d29d650cdef7a2bbc88e8d5efeb788e13bd9ed3321f910a",
+    "controls": "passed",
+    "three_row_captions": "passed",
+    "external_requests": []
+  },
+  {
+    "lesson": "G09/G09-Math/F01/mobile/0102.html",
+    "viewport": [
+      390,
+      844
+    ],
+    "states": 59,
+    "problems": [],
+    "font": "Vazir, Vazirmatn, Tahoma, sans-serif",
+    "original_ogg_sha256": "6bd4bc65e0490b7a4a1f134faa58af1a4bbd499f1deac71593d727b0f20c8163",
+    "controls": "passed",
+    "three_row_captions": "passed",
+    "external_requests": []
+  },
+  {
+    "lesson": "G09/G09-Math/F01/mobile/0102.html",
+    "viewport": [
+      360,
+      640
+    ],
+    "states": 59,
+    "problems": [],
+    "font": "Vazir, Vazirmatn, Tahoma, sans-serif",
+    "original_ogg_sha256": "6bd4bc65e0490b7a4a1f134faa58af1a4bbd499f1deac71593d727b0f20c8163",
+    "controls": "passed",
+    "three_row_captions": "passed",
+    "external_requests": []
+  },
+  {
+    "lesson": "G09/G09-Math/F01/mobile/0103.html",
+    "viewport": [
+      390,
+      844
+    ],
+    "states": 71,
+    "problems": [],
+    "font": "Vazir, Vazirmatn, Tahoma, sans-serif",
+    "original_ogg_sha256": "aba1cbafd4e49a705f789d63bee2805bc89af1734c217cf43a2a1baa62216c2c",
+    "controls": "passed",
+    "three_row_captions": "passed",
+    "external_requests": []
+  },
+  {
+    "lesson": "G09/G09-Math/F01/mobile/0103.html",
+    "viewport": [
+      360,
+      640
+    ],
+    "states": 71,
+    "problems": [],
+    "font": "Vazir, Vazirmatn, Tahoma, sans-serif",
+    "original_ogg_sha256": "aba1cbafd4e49a705f789d63bee2805bc89af1734c217cf43a2a1baa62216c2c",
+    "controls": "passed",
+    "three_row_captions": "passed",
+    "external_requests": []
+  },
+  {
+    "lesson": "G09/G09-Math/F01/mobile/0104.html",
+    "viewport": [
+      390,
+      844
+    ],
+    "states": 58,
+    "problems": [],
+    "font": "Vazir, Vazirmatn, Tahoma, sans-serif",
+    "original_ogg_sha256": "07d8324f73c11594e34ca16d7dd89fdaed1aefacfd41d95e13a1f59c180c46ad",
+    "controls": "passed",
+    "three_row_captions": "passed",
+    "external_requests": []
+  },
+  {
+    "lesson": "G09/G09-Math/F01/mobile/0104.html",
+    "viewport": [
+      360,
+      640
+    ],
+    "states": 58,
+    "problems": [],
+    "font": "Vazir, Vazirmatn, Tahoma, sans-serif",
+    "original_ogg_sha256": "07d8324f73c11594e34ca16d7dd89fdaed1aefacfd41d95e13a1f59c180c46ad",
+    "controls": "passed",
+    "three_row_captions": "passed",
+    "external_requests": []
+  },
+  {
+    "lesson": "G09/G09-Math/F02/mobile/02-review.html",
+    "viewport": [
+      390,
+      844
+    ],
+    "states": 59,
+    "problems": [],
+    "font": "Vazir, Vazirmatn, Tahoma, sans-serif",
+    "original_ogg_sha256": "200e80e517c629461add91e541d0e34545071ef44980430afcfa03c89f80d798",
+    "controls": "passed",
+    "three_row_captions": "passed",
+    "external_requests": []
+  },
+  {
+    "lesson": "G09/G09-Math/F02/mobile/02-review.html",
+    "viewport": [
+      360,
+      640
+    ],
+    "states": 59,
+    "problems": [],
+    "font": "Vazir, Vazirmatn, Tahoma, sans-serif",
+    "original_ogg_sha256": "200e80e517c629461add91e541d0e34545071ef44980430afcfa03c89f80d798",
+    "controls": "passed",
+    "three_row_captions": "passed",
+    "external_requests": []
+  },
+  {
+    "lesson": "G09/G09-Math/F02/mobile/0201.html",
+    "viewport": [
+      390,
+      844
+    ],
+    "states": 59,
+    "problems": [],
+    "font": "Vazir, Vazirmatn, Tahoma, sans-serif",
+    "original_ogg_sha256": "1053d6669e9ab2bb90ece416be03af6ccf12392fa39b28f4d9e0ba97de848140",
+    "controls": "passed",
+    "three_row_captions": "passed",
+    "external_requests": []
+  },
+  {
+    "lesson": "G09/G09-Math/F02/mobile/0201.html",
+    "viewport": [
+      360,
+      640
+    ],
+    "states": 59,
+    "problems": [],
+    "font": "Vazir, Vazirmatn, Tahoma, sans-serif",
+    "original_ogg_sha256": "1053d6669e9ab2bb90ece416be03af6ccf12392fa39b28f4d9e0ba97de848140",
+    "controls": "passed",
+    "three_row_captions": "passed",
+    "external_requests": []
+  },
+  {
+    "lesson": "G09/G09-Math/F02/mobile/0202.html",
+    "viewport": [
+      390,
+      844
+    ],
+    "states": 78,
+    "problems": [],
+    "font": "Vazir, Vazirmatn, Tahoma, sans-serif",
+    "original_ogg_sha256": "3c3ff841d837c5a827778b1f3623aef821bdc206fd53f3ba3fd9707f695f369a",
+    "controls": "passed",
+    "three_row_captions": "passed",
+    "external_requests": []
+  },
+  {
+    "lesson": "G09/G09-Math/F02/mobile/0202.html",
+    "viewport": [
+      360,
+      640
+    ],
+    "states": 78,
+    "problems": [],
+    "font": "Vazir, Vazirmatn, Tahoma, sans-serif",
+    "original_ogg_sha256": "3c3ff841d837c5a827778b1f3623aef821bdc206fd53f3ba3fd9707f695f369a",
+    "controls": "passed",
+    "three_row_captions": "passed",
+    "external_requests": []
+  },
+  {
+    "lesson": "G09/G09-Math/F02/mobile/0203.html",
+    "viewport": [
+      390,
+      844
+    ],
+    "states": 50,
+    "problems": [],
+    "font": "Vazir, Vazirmatn, Tahoma, sans-serif",
+    "original_ogg_sha256": "af19762591b6433b91c611aced93c929f2fe58597ca6e465f059fae55cbcd93f",
+    "controls": "passed",
+    "three_row_captions": "passed",
+    "external_requests": []
+  },
+  {
+    "lesson": "G09/G09-Math/F02/mobile/0203.html",
+    "viewport": [
+      360,
+      640
+    ],
+    "states": 50,
+    "problems": [],
+    "font": "Vazir, Vazirmatn, Tahoma, sans-serif",
+    "original_ogg_sha256": "af19762591b6433b91c611aced93c929f2fe58597ca6e465f059fae55cbcd93f",
+    "controls": "passed",
+    "three_row_captions": "passed",
+    "external_requests": []
+  }
+]
