@@ -1,11 +1,11 @@
-# خروجی اصلاح‌شدهٔ ریاضی نهم — فصل‌های اول و دوم
+# نسخهٔ نهایی درس‌های موبایل ریاضی نهم
 
-[دانلود بستهٔ ۹ درس](https://raw.githubusercontent.com/samanta-nz/Final-Books-Data/delivery/g09-mobile-ca31837/G09-Math-Mobile-Corrected.zip)
+۹ درس مستقل و آفلاین با OGG اصلی، وایت‌برد چهاررنگ، وزیر بولد و رقم فارسی، فرمول کتابی، ۱۰۱ نمایش شکلی متناسب تدریس و کنترل سیک.
 
-پس از استخراج ZIP، فایل `index.html` را باز کنید. هر درس مستقل و آفلاین است.
+[دانلود بستهٔ کامل](https://raw.githubusercontent.com/samanta-nz/Final-Books-Data/delivery/g09-mobile-ca31837/G09-Math-Mobile-Corrected.zip)
 
-[شرح اصلاحات و آزمون‌ها](https://github.com/samanta-nz/Final-Books-Data/blob/ca31837397dea9e7299f0eac711273de0f732bec/MOBILE-FIXES.fa.md)
+پس از استخراج، index.html را باز کنید.
 
-کد این بسته در [PR شمارهٔ ۳](https://github.com/samanta-nz/Final-Books-Data/pull/3) است؛ هنوز ادغام نشده است.
+[کد و تغییرات](https://github.com/samanta-nz/Final-Books-Data/pull/3)
 
-SHA-256: `62ddc642ff1d111bf50206f289be9b65ee4ed29b995c7f823fc248410b4e6e77`
+SHA256: `10faa04ea1e9629d38b772e263e67cad9384e98c9f50b6c1998356067e1095e6`
