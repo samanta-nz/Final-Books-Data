@@ -9,3 +9,9 @@
 [کد و تغییرات](https://github.com/samanta-nz/Final-Books-Data/pull/3)
 
 SHA256: `10faa04ea1e9629d38b772e263e67cad9384e98c9f50b6c1998356067e1095e6`
+
+## ابزارهای قابل استفاده برای درس‌های بعدی
+
+[دانلود مجموعهٔ کامل ابزارهای درس موبایل](https://raw.githubusercontent.com/samanta-nz/Final-Books-Data/delivery/g09-mobile-ca31837/Persian-Mobile-Lesson-Toolkit.zip)
+
+[راهنمای تولید و بررسی کیفیت](https://github.com/samanta-nz/Final-Books-Data/blob/codex/fix-mobile-sync-and-boards/tools/README.md)
