@@ -3,10 +3,10 @@
 
     python tools/build_mobile.py G09/G09-Math/F01              # every lesson + index
     python tools/build_mobile.py G09/G09-Math/F01/0101         # one lesson
-    python tools/build_mobile.py G09/G09-Math/F01 --bg other.png --bitrate 24000
+    python tools/build_mobile.py G09/G09-Math/F01 --bg other.png
 
 Output: `G09/G09-Math/F01/mobile/<base>.html` - a single HTML5 file that
-contains the classroom background (base64), the narration (base64 Opus) and the
+contains the classroom background (base64), the original OGG narration (base64) and the
 timing data.  Layout follows the background artwork (values measured on the
 image, in % of the image box):
 
@@ -62,28 +62,8 @@ def mmss(t):
 
 # ------------------------------------------------------------------- audio ----
 def audio_bytes(ogg, bitrate=32000, sr=22050):
-    """AAC-LC in MP4 (universal: iOS Safari, Chrome, Firefox, Edge).
-
-    Cached in ~/.cache so rebuilds are instant.
-    """
-    import hashlib
-    from mobile_audio import ffmpeg_input, edits_path
-    cache = os.path.join(os.path.expanduser('~'), '.cache', 'board-sync')
-    os.makedirs(cache, exist_ok=True)
-    edit=edits_path(ogg)
-    key = hashlib.md5((f'{os.path.abspath(ogg)}|{os.path.getmtime(ogg)}|{bitrate}|{sr}'+(edit.read_text() if edit.exists() else '')).encode()).hexdigest()[:12]
-    path = os.path.join(cache, os.path.basename(ogg).replace('.ogg', f'-aac{bitrate // 1000}k-{key}.m4a'))
-    if os.path.exists(path):
-        return open(path, 'rb').read()
-    tmp = tempfile.NamedTemporaryFile(suffix='.m4a', delete=False)
-    tmp.close()
-    subprocess.run(ffmpeg_input(ogg)+['-ac', '1',
-                    '-ar', str(sr), '-c:a', 'aac', '-b:a', str(bitrate),
-                    '-movflags', '+faststart', tmp.name], check=True)
-    data = open(tmp.name, 'rb').read()
-    os.unlink(tmp.name)
-    open(path, 'wb').write(data)
-    return data
+    """Embed the original OGG bit for bit; never transcode narration."""
+    return pathlib.Path(ogg).read_bytes()
 
 
 def b64(data, width=400):
@@ -105,6 +85,7 @@ def bg_jpeg(png, quality=82, width=901):
 
 
 FONTS = [
+    ('Vazir', 700, 'Vazir-Bold.woff2'),
     ('Vazirmatn', 400, 'vazirmatn-arabic-400-normal.woff2'),
     ('Vazirmatn', 700, 'vazirmatn-arabic-700-normal.woff2'),
     ('Vazirmatn', 900, 'vazirmatn-arabic-900-normal.woff2'),
@@ -537,7 +518,7 @@ function layout(){
 (function boot(){
   try {
     au.src = URL.createObjectURL(new Blob([b64(document.getElementById('audio-data').textContent)],
-                                          {type: 'audio/mp4'}));
+                                          {type: 'audio/ogg'}));
   } catch (e) {}
   pgEl.appendChild(pn);
   buildSelect();
@@ -699,13 +680,16 @@ def build_authored(folder, base, timing, board_path, bg_png, bitrate, quality, o
     lines += [{'t': s['t'], 'e': s['end'], 'text': s['text'], 'words': s['words']}
               for s in timing['sentences'] if s['text'] not in excluded]
     template = pathlib.Path(HERE, 'mobile_template.html').read_text()
-    values = {'__TITLE__': esc(nice_title(timing.get('doc'), base)),
+    values = {'__MATHCSS__': pathlib.Path(HERE,'math-assets/katex-embedded.css').read_text(),
+              '__MATHJS__': pathlib.Path(HERE,'math-assets/katex.min.js').read_text()+'\n'+pathlib.Path(HERE,'math_notation.js').read_text(),
+              '__TITLE__': esc(nice_title(timing.get('doc'), base)),
               '__FONTS__': font_css(out_dir), '__BG__': b64(bg_jpeg(bg_png, quality), width=None),
               '__AUDIO__': b64(audio_bytes(os.path.join(folder, base+'.ogg'), bitrate)),
               '__SEGS__': json.dumps(segs, ensure_ascii=False),
               '__LINES__': json.dumps(lines, ensure_ascii=False),
               '__BOARDS__': json.dumps(boards, ensure_ascii=False),
               '__DUR__': str(timing['stats']['duration']),
+              '__CUTS__': json.dumps(json.loads(pathlib.Path(folder,base+'.audio-edits.json').read_text()).get('remove',[]) if pathlib.Path(folder,base+'.audio-edits.json').exists() else []),
               '__PLAYER__': pathlib.Path(HERE, 'mobile_player.js').read_text()}
     for marker, value in values.items():
         template = template.replace(marker, value)
