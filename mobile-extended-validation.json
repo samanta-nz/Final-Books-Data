@@ -1,0 +1,504 @@
+{
+  "scope": {
+    "audio_samples": 27,
+    "sampled_seconds": 585.0
+  },
+  "matched_sentence_checks": 41,
+  "median_new_error_s": 0.12,
+  "p90_new_error_s": 0.38,
+  "evidence": [
+    {
+      "lesson": "F01/mobile/01-review.html",
+      "text": "توی این جلسه می‌خوایم فصل مجموعه‌ها رو یک‌جا مرور کنیم.",
+      "audio_start_approx": 3.3,
+      "edited_audio_start_approx": 3.3,
+      "old_caption_start": 3.47,
+      "new_caption_start": 3.48,
+      "old_error_s": 0.17,
+      "new_error_s": 0.18
+    },
+    {
+      "lesson": "F01/mobile/01-review.html",
+      "text": "هیچ‌کدوم از عضوهای مشترک وارد تفاضل‌ها نمی‌شن.",
+      "audio_start_approx": 673.72,
+      "edited_audio_start_approx": 673.72,
+      "old_caption_start": 653.53,
+      "new_caption_start": 673.533,
+      "old_error_s": 20.19,
+      "new_error_s": 0.187
+    },
+    {
+      "lesson": "F01/mobile/01-review.html",
+      "text": "جمع چهار، چهار، دو و دو، دوازده می‌شه.",
+      "audio_start_approx": 690.34,
+      "edited_audio_start_approx": 690.34,
+      "old_caption_start": 670.64,
+      "new_caption_start": 690.184,
+      "old_error_s": 19.7,
+      "new_error_s": 0.156
+    },
+    {
+      "lesson": "F01/mobile/01-review.html",
+      "text": "در آخر، جواب رو با معنی‌اش کنترل می‌کنم.",
+      "audio_start_approx": 1305.96,
+      "edited_audio_start_approx": 1305.96,
+      "old_caption_start": 1299.04,
+      "new_caption_start": 1306.836,
+      "old_error_s": 6.92,
+      "new_error_s": 0.876
+    },
+    {
+      "lesson": "F01/mobile/01-review.html",
+      "text": "اشتراک نباید عضوِ بیرون یکی از مجموعه‌ها داشته باشه.",
+      "audio_start_approx": 1309.72,
+      "edited_audio_start_approx": 1309.72,
+      "old_caption_start": 1303.3,
+      "new_caption_start": 1309.776,
+      "old_error_s": 6.42,
+      "new_error_s": 0.056
+    },
+    {
+      "lesson": "F01/mobile/01-review.html",
+      "text": "احتمال هم باید بین صفر و یک باشه.",
+      "audio_start_approx": 1320.66,
+      "edited_audio_start_approx": 1320.66,
+      "old_caption_start": 1318.22,
+      "new_caption_start": 1320.922,
+      "old_error_s": 2.44,
+      "new_error_s": 0.262
+    },
+    {
+      "lesson": "F01/mobile/0101.html",
+      "text": "از مثال‌های خودِ کتاب شروع می‌کنیم و قدم به قدم جلو می‌ریم.",
+      "audio_start_approx": 10.1,
+      "edited_audio_start_approx": 10.1,
+      "old_caption_start": 10.12,
+      "new_caption_start": 10.08,
+      "old_error_s": 0.02,
+      "new_error_s": 0.02
+    },
+    {
+      "lesson": "F01/mobile/0101.html",
+      "text": "در نتیجه هیچ عددی پیدا نمی‌شه که هم دورقمی باشه، هم زوج و هم اوّل.",
+      "audio_start_approx": 840.4,
+      "edited_audio_start_approx": 840.4,
+      "old_caption_start": 832.03,
+      "new_caption_start": 840.767,
+      "old_error_s": 8.37,
+      "new_error_s": 0.367
+    },
+    {
+      "lesson": "F01/mobile/0101.html",
+      "text": "پس این مجموعه هیچ عضوی نداره.",
+      "audio_start_approx": 846.06,
+      "edited_audio_start_approx": 846.06,
+      "old_caption_start": 836.6,
+      "new_caption_start": 846.647,
+      "old_error_s": 9.46,
+      "new_error_s": 0.587
+    },
+    {
+      "lesson": "F01/mobile/0101.html",
+      "text": "گاهی چند تا عضو درومد، گاهی فقط یکی، و گاهی هیچی پیدا نشد و مجموعه تهی بود.",
+      "audio_start_approx": 1629.68,
+      "edited_audio_start_approx": 1629.68,
+      "old_caption_start": 1632.61,
+      "new_caption_start": 1629.707,
+      "old_error_s": 2.93,
+      "new_error_s": 0.027
+    },
+    {
+      "lesson": "F01/mobile/0101.html",
+      "text": "پس اگه بخوای کلِ درس رو تو چند جمله به یاد بیاری:",
+      "audio_start_approx": 1636.4,
+      "edited_audio_start_approx": 1636.4,
+      "old_caption_start": 1639.72,
+      "new_caption_start": 1636.234,
+      "old_error_s": 3.32,
+      "new_error_s": 0.166
+    },
+    {
+      "lesson": "F01/mobile/0102.html",
+      "text": "توی درس قبل دیدیم مجموعه وقتی روشنه که معلوم باشه چه چیزهایی عضوشن.",
+      "audio_start_approx": 3.4,
+      "edited_audio_start_approx": 3.4,
+      "old_caption_start": 3.79,
+      "new_caption_start": 3.74,
+      "old_error_s": 0.39,
+      "new_error_s": 0.34
+    },
+    {
+      "lesson": "F01/mobile/0102.html",
+      "text": "حالا می‌خوایم یه قدم جلوتر بریم.",
+      "audio_start_approx": 8.76,
+      "edited_audio_start_approx": 8.76,
+      "old_caption_start": 8.94,
+      "new_caption_start": 8.68,
+      "old_error_s": 0.18,
+      "new_error_s": 0.08
+    },
+    {
+      "lesson": "F01/mobile/0102.html",
+      "text": "یه توضیح تکمیلی برای این تعداد هم هست.",
+      "audio_start_approx": 780.94,
+      "edited_audio_start_approx": 780.94,
+      "old_caption_start": 775.32,
+      "new_caption_start": 781.163,
+      "old_error_s": 5.62,
+      "new_error_s": 0.223
+    },
+    {
+      "lesson": "F01/mobile/0102.html",
+      "text": "برای دو عضو، دو ضرب در دو حالت داریم.",
+      "audio_start_approx": 788.94,
+      "edited_audio_start_approx": 788.94,
+      "old_caption_start": 786.2,
+      "new_caption_start": 788.96,
+      "old_error_s": 2.74,
+      "new_error_s": 0.02
+    },
+    {
+      "lesson": "F01/mobile/0102.html",
+      "text": "اما اگه فقط بگم «دو عضو از مجموعهٔ اولیه»، هنوز انتخاب یکتایی ندارم.",
+      "audio_start_approx": 1511.74,
+      "edited_audio_start_approx": 1511.74,
+      "old_caption_start": 1510.36,
+      "new_caption_start": 1512.208,
+      "old_error_s": 1.38,
+      "new_error_s": 0.468
+    },
+    {
+      "lesson": "F01/mobile/0103.html",
+      "text": "سلام به روی ماهتون عزیزان!",
+      "audio_start_approx": 8.0,
+      "edited_audio_start_approx": 8.0,
+      "old_caption_start": 0.0,
+      "new_caption_start": 8.233,
+      "old_error_s": 8.0,
+      "new_error_s": 0.233
+    },
+    {
+      "lesson": "F01/mobile/0103.html",
+      "text": "برای تفاضل، اول کنترل می‌کنم همهٔ عضوهای جواب در مجموعهٔ اول باشن.",
+      "audio_start_approx": 1447.72,
+      "edited_audio_start_approx": 1264.24,
+      "old_caption_start": 1433.67,
+      "new_caption_start": 1264.12,
+      "old_error_s": 14.05,
+      "new_error_s": 0.12
+    },
+    {
+      "lesson": "F01/mobile/0103.html",
+      "text": "بعد بررسی می‌کنم هیچ‌کدومشون در مجموعهٔ دوم نباشن.",
+      "audio_start_approx": 1453.68,
+      "edited_audio_start_approx": 1270.2,
+      "old_caption_start": 1440.43,
+      "new_caption_start": 1270.1,
+      "old_error_s": 13.25,
+      "new_error_s": 0.1
+    },
+    {
+      "lesson": "F01/mobile/0103.html",
+      "text": "این دو کنترل کنار هم لازم‌ان.",
+      "audio_start_approx": 1457.98,
+      "edited_audio_start_approx": 1274.5,
+      "old_caption_start": 1444.72,
+      "new_caption_start": 1274.26,
+      "old_error_s": 13.26,
+      "new_error_s": 0.24
+    },
+    {
+      "lesson": "F01/mobile/0104.html",
+      "text": "سلام به روی ماهتون عزیزان!",
+      "audio_start_approx": 5.52,
+      "edited_audio_start_approx": 5.52,
+      "old_caption_start": 0.0,
+      "new_caption_start": 5.594,
+      "old_error_s": 5.52,
+      "new_error_s": 0.074
+    },
+    {
+      "lesson": "F01/mobile/0104.html",
+      "text": "توی این درس، مجموعه‌ها رو می‌بریم سراغ احتمال.",
+      "audio_start_approx": 8.8,
+      "edited_audio_start_approx": 8.8,
+      "old_caption_start": 3.69,
+      "new_caption_start": 9.075,
+      "old_error_s": 5.11,
+      "new_error_s": 0.275
+    },
+    {
+      "lesson": "F01/mobile/0104.html",
+      "text": "پس مخرج نسبت احتمال، دوازدهه.",
+      "audio_start_approx": 661.34,
+      "edited_audio_start_approx": 661.34,
+      "old_caption_start": 652.93,
+      "new_caption_start": 661.175,
+      "old_error_s": 8.41,
+      "new_error_s": 0.165
+    },
+    {
+      "lesson": "F01/mobile/0104.html",
+      "text": "برای آبی بودن، چهار مهرهٔ مطلوب داریم.",
+      "audio_start_approx": 664.78,
+      "edited_audio_start_approx": 664.78,
+      "old_caption_start": 655.06,
+      "new_caption_start": 664.735,
+      "old_error_s": 9.72,
+      "new_error_s": 0.045
+    },
+    {
+      "lesson": "F01/mobile/0104.html",
+      "text": "احتمال چهار‌دوازدهمه که برابر یک‌سوم می‌شه.",
+      "audio_start_approx": 667.72,
+      "edited_audio_start_approx": 667.72,
+      "old_caption_start": 657.85,
+      "new_caption_start": 667.675,
+      "old_error_s": 9.87,
+      "new_error_s": 0.045
+    },
+    {
+      "lesson": "F01/mobile/0104.html",
+      "text": "برای «سبز نباشد»، مهره‌های قرمز و آبی مطلوبن.",
+      "audio_start_approx": 671.6,
+      "edited_audio_start_approx": 671.6,
+      "old_caption_start": 661.28,
+      "new_caption_start": 671.435,
+      "old_error_s": 10.32,
+      "new_error_s": 0.165
+    },
+    {
+      "lesson": "F01/mobile/0104.html",
+      "text": "با ساده‌کردن یا هم‌مخرج‌کردن، برابریشون روشن می‌شه.",
+      "audio_start_approx": 1268.2,
+      "edited_audio_start_approx": 1268.2,
+      "old_caption_start": 1263.39,
+      "new_caption_start": 1268.115,
+      "old_error_s": 4.81,
+      "new_error_s": 0.085
+    },
+    {
+      "lesson": "F02/mobile/02-review.html",
+      "text": "این متن یه مرور تألیفی بر اساس مطالب فصله.",
+      "audio_start_approx": 10.7,
+      "edited_audio_start_approx": 10.7,
+      "old_caption_start": 11.25,
+      "new_caption_start": 11.26,
+      "old_error_s": 0.55,
+      "new_error_s": 0.56
+    },
+    {
+      "lesson": "F02/mobile/02-review.html",
+      "text": "خود قدر مطلق، چهار داده بود و منفی بیرونی نتیجه رو قرینه کرد.",
+      "audio_start_approx": 691.98,
+      "edited_audio_start_approx": 691.98,
+      "old_caption_start": 700.86,
+      "new_caption_start": 691.942,
+      "old_error_s": 8.88,
+      "new_error_s": 0.038
+    },
+    {
+      "lesson": "F02/mobile/02-review.html",
+      "text": "محدودهٔ دو خط عمودی، بخشی از معنی عبارت محسوب می‌شه.",
+      "audio_start_approx": 697.38,
+      "edited_audio_start_approx": 697.38,
+      "old_caption_start": 705.68,
+      "new_caption_start": 697.303,
+      "old_error_s": 8.3,
+      "new_error_s": 0.077
+    },
+    {
+      "lesson": "F02/mobile/02-review.html",
+      "text": "برای مجموعهٔ روی محور، نوع عدد و هر دو مرز رو می‌خونم.",
+      "audio_start_approx": 1335.7,
+      "edited_audio_start_approx": 1335.7,
+      "old_caption_start": 1344.57,
+      "new_caption_start": 1335.4,
+      "old_error_s": 8.87,
+      "new_error_s": 0.3
+    },
+    {
+      "lesson": "F02/mobile/02-review.html",
+      "text": "برای قدر مطلق، محدودهٔ عبارت و علامتِ کل داخل رو مشخص می‌کنم.",
+      "audio_start_approx": 1340.72,
+      "edited_audio_start_approx": 1340.72,
+      "old_caption_start": 1349.04,
+      "new_caption_start": 1340.6,
+      "old_error_s": 8.32,
+      "new_error_s": 0.12
+    },
+    {
+      "lesson": "F02/mobile/0201.html",
+      "text": "از فصل قبل می‌دونیم یه عدد گویا رو می‌شه با یه کسر نوشت که صورت و مخرجش صحیح باشن و مخرجش صفر نباشه.",
+      "audio_start_approx": 7.06,
+      "edited_audio_start_approx": 7.06,
+      "old_caption_start": 7.0,
+      "new_caption_start": 7.02,
+      "old_error_s": 0.06,
+      "new_error_s": 0.04
+    },
+    {
+      "lesson": "F02/mobile/0201.html",
+      "text": "این فرق برای انتخاب روش مهمه. وقتی فقط چند عدد در فاصله می‌خوایم، هم‌مخرج‌کردن می‌تونه چند جواب رو یک‌جا بده.",
+      "audio_start_approx": 1344.48,
+      "edited_audio_start_approx": 1344.48,
+      "old_caption_start": 1338.63,
+      "new_caption_start": 1344.556,
+      "old_error_s": 5.85,
+      "new_error_s": 0.076
+    },
+    {
+      "lesson": "F02/mobile/0201.html",
+      "text": "وقتی یه عددِ دقیقاً میانی می‌خوایم، میانگین مستقیم به همون هدف می‌رسه.",
+      "audio_start_approx": 1353.02,
+      "edited_audio_start_approx": 1353.02,
+      "old_caption_start": 1348.33,
+      "new_caption_start": 1352.946,
+      "old_error_s": 4.69,
+      "new_error_s": 0.074
+    },
+    {
+      "lesson": "F02/mobile/0202.html",
+      "text": "هر چهار حاصل گنگن و از مرز پایین بزرگ‌ترن.",
+      "audio_start_approx": 672.14,
+      "edited_audio_start_approx": 672.14,
+      "old_caption_start": 693.44,
+      "new_caption_start": 672.05,
+      "old_error_s": 21.3,
+      "new_error_s": 0.09
+    },
+    {
+      "lesson": "F02/mobile/0202.html",
+      "text": "ریشهٔ دوم دو از یک‌ونیم کوچک‌تره؛ پس بزرگ‌ترین جواب ما از یک‌ونه‌دهم کوچک‌تره.",
+      "audio_start_approx": 675.8,
+      "edited_audio_start_approx": 675.8,
+      "old_caption_start": 697.4,
+      "new_caption_start": 675.75,
+      "old_error_s": 21.6,
+      "new_error_s": 0.05
+    },
+    {
+      "lesson": "F02/mobile/0202.html",
+      "text": "اگر برای عددهای صحیح بنویسیم هم فقط یک باقی می‌مونه.",
+      "audio_start_approx": 1296.06,
+      "edited_audio_start_approx": 1296.06,
+      "old_caption_start": 1296.45,
+      "new_caption_start": 1296.44,
+      "old_error_s": 0.39,
+      "new_error_s": 0.38
+    },
+    {
+      "lesson": "F02/mobile/0202.html",
+      "text": "در بررسی هر عبارت، اول معنی نماد رو به جمله تبدیل می‌کنم.",
+      "audio_start_approx": 1312.24,
+      "edited_audio_start_approx": 1312.24,
+      "old_caption_start": 1313.9,
+      "new_caption_start": 1312.22,
+      "old_error_s": 1.66,
+      "new_error_s": 0.02
+    },
+    {
+      "lesson": "F02/mobile/0203.html",
+      "text": "برای یه مثال تکمیلی، فاصلهٔ عدد منفی دو از عدد سه، پنج واحده.",
+      "audio_start_approx": 1272.6,
+      "edited_audio_start_approx": 1272.6,
+      "old_caption_start": 1269.21,
+      "new_caption_start": 1272.243,
+      "old_error_s": 3.39,
+      "new_error_s": 0.357
+    },
+    {
+      "lesson": "F02/mobile/0203.html",
+      "text": "این توضیح کمک می‌کنه بفهمیم چرا قدر مطلق با اندازهٔ فاصله ارتباط داره و جهت رو کنار می‌ذاره.",
+      "audio_start_approx": 1285.9,
+      "edited_audio_start_approx": 1285.9,
+      "old_caption_start": 1282.11,
+      "new_caption_start": 1285.783,
+      "old_error_s": 3.79,
+      "new_error_s": 0.117
+    }
+  ],
+  "encoded_audio": [
+    {
+      "lesson": "F01/mobile/01-review.html",
+      "codec": "aac",
+      "sample_rate": "22050",
+      "channels": 1,
+      "duration_difference_s": 0.0,
+      "audio_lag_s": -0.016,
+      "correlation_with_original": 0.9927
+    },
+    {
+      "lesson": "F01/mobile/0101.html",
+      "codec": "aac",
+      "sample_rate": "22050",
+      "channels": 1,
+      "duration_difference_s": 0.0,
+      "audio_lag_s": 0.0,
+      "correlation_with_original": 0.9889
+    },
+    {
+      "lesson": "F01/mobile/0102.html",
+      "codec": "aac",
+      "sample_rate": "22050",
+      "channels": 1,
+      "duration_difference_s": 0.0,
+      "audio_lag_s": 0.0,
+      "correlation_with_original": 0.9904
+    },
+    {
+      "lesson": "F01/mobile/0103.html",
+      "codec": "aac",
+      "sample_rate": "22050",
+      "channels": 1,
+      "duration_difference_s": 0.0,
+      "audio_lag_s": 0.0,
+      "correlation_with_original": 0.9952
+    },
+    {
+      "lesson": "F01/mobile/0104.html",
+      "codec": "aac",
+      "sample_rate": "22050",
+      "channels": 1,
+      "duration_difference_s": 0.0,
+      "audio_lag_s": 0.0,
+      "correlation_with_original": 0.9851
+    },
+    {
+      "lesson": "F02/mobile/02-review.html",
+      "codec": "aac",
+      "sample_rate": "22050",
+      "channels": 1,
+      "duration_difference_s": 0.0,
+      "audio_lag_s": 0.0,
+      "correlation_with_original": 0.9938
+    },
+    {
+      "lesson": "F02/mobile/0201.html",
+      "codec": "aac",
+      "sample_rate": "22050",
+      "channels": 1,
+      "duration_difference_s": 0.0,
+      "audio_lag_s": 0.0,
+      "correlation_with_original": 0.9959
+    },
+    {
+      "lesson": "F02/mobile/0202.html",
+      "codec": "aac",
+      "sample_rate": "22050",
+      "channels": 1,
+      "duration_difference_s": 0.0,
+      "audio_lag_s": 0.0,
+      "correlation_with_original": 0.995
+    },
+    {
+      "lesson": "F02/mobile/0203.html",
+      "codec": "aac",
+      "sample_rate": "22050",
+      "channels": 1,
+      "duration_difference_s": 0.0,
+      "audio_lag_s": 0.0,
+      "correlation_with_original": 0.9963
+    }
+  ]
+}

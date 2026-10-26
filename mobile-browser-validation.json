@@ -1,0 +1,182 @@
+[
+  {
+    "lesson": "F01/01-review.board.json",
+    "size": [
+      390,
+      844
+    ],
+    "board_pages": 18,
+    "errors": [],
+    "external_requests": []
+  },
+  {
+    "lesson": "F01/0101.board.json",
+    "size": [
+      390,
+      844
+    ],
+    "board_pages": 26,
+    "errors": [],
+    "external_requests": []
+  },
+  {
+    "lesson": "F01/0102.board.json",
+    "size": [
+      390,
+      844
+    ],
+    "board_pages": 17,
+    "errors": [],
+    "external_requests": []
+  },
+  {
+    "lesson": "F01/0103.board.json",
+    "size": [
+      390,
+      844
+    ],
+    "board_pages": 17,
+    "errors": [],
+    "external_requests": []
+  },
+  {
+    "lesson": "F01/0104.board.json",
+    "size": [
+      390,
+      844
+    ],
+    "board_pages": 19,
+    "errors": [],
+    "external_requests": []
+  },
+  {
+    "lesson": "F02/02-review.board.json",
+    "size": [
+      390,
+      844
+    ],
+    "board_pages": 16,
+    "errors": [],
+    "external_requests": []
+  },
+  {
+    "lesson": "F02/0201.board.json",
+    "size": [
+      390,
+      844
+    ],
+    "board_pages": 16,
+    "errors": [],
+    "external_requests": []
+  },
+  {
+    "lesson": "F02/0202.board.json",
+    "size": [
+      390,
+      844
+    ],
+    "board_pages": 17,
+    "errors": [],
+    "external_requests": []
+  },
+  {
+    "lesson": "F02/0203.board.json",
+    "size": [
+      390,
+      844
+    ],
+    "board_pages": 14,
+    "errors": [],
+    "external_requests": []
+  },
+  {
+    "lesson": "F01/01-review.board.json",
+    "size": [
+      360,
+      640
+    ],
+    "board_pages": 18,
+    "errors": [],
+    "external_requests": []
+  },
+  {
+    "lesson": "F01/0101.board.json",
+    "size": [
+      360,
+      640
+    ],
+    "board_pages": 30,
+    "errors": [],
+    "external_requests": []
+  },
+  {
+    "lesson": "F01/0102.board.json",
+    "size": [
+      360,
+      640
+    ],
+    "board_pages": 20,
+    "errors": [],
+    "external_requests": []
+  },
+  {
+    "lesson": "F01/0103.board.json",
+    "size": [
+      360,
+      640
+    ],
+    "board_pages": 24,
+    "errors": [],
+    "external_requests": []
+  },
+  {
+    "lesson": "F01/0104.board.json",
+    "size": [
+      360,
+      640
+    ],
+    "board_pages": 20,
+    "errors": [],
+    "external_requests": []
+  },
+  {
+    "lesson": "F02/02-review.board.json",
+    "size": [
+      360,
+      640
+    ],
+    "board_pages": 16,
+    "errors": [],
+    "external_requests": []
+  },
+  {
+    "lesson": "F02/0201.board.json",
+    "size": [
+      360,
+      640
+    ],
+    "board_pages": 17,
+    "errors": [],
+    "external_requests": []
+  },
+  {
+    "lesson": "F02/0202.board.json",
+    "size": [
+      360,
+      640
+    ],
+    "board_pages": 20,
+    "errors": [],
+    "external_requests": []
+  },
+  {
+    "lesson": "F02/0203.board.json",
+    "size": [
+      360,
+      640
+    ],
+    "board_pages": 14,
+    "errors": [],
+    "external_requests": []
+  }
+]

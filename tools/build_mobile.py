@@ -24,6 +24,8 @@ import os
 import re
 import sys
 import tempfile
+import pathlib
+import subprocess
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
@@ -65,29 +67,19 @@ def audio_bytes(ogg, bitrate=32000, sr=22050):
     Cached in ~/.cache so rebuilds are instant.
     """
     import hashlib
+    from mobile_audio import ffmpeg_input, edits_path
     cache = os.path.join(os.path.expanduser('~'), '.cache', 'board-sync')
     os.makedirs(cache, exist_ok=True)
-    key = hashlib.md5(f'{os.path.abspath(ogg)}|{os.path.getmtime(ogg)}|{bitrate}|{sr}'.encode()).hexdigest()[:12]
+    edit=edits_path(ogg)
+    key = hashlib.md5((f'{os.path.abspath(ogg)}|{os.path.getmtime(ogg)}|{bitrate}|{sr}'+(edit.read_text() if edit.exists() else '')).encode()).hexdigest()[:12]
     path = os.path.join(cache, os.path.basename(ogg).replace('.ogg', f'-aac{bitrate // 1000}k-{key}.m4a'))
     if os.path.exists(path):
         return open(path, 'rb').read()
-    import av
-    src = av.open(ogg)
-    st_in = src.streams.audio[0]
     tmp = tempfile.NamedTemporaryFile(suffix='.m4a', delete=False)
     tmp.close()
-    out = av.open(tmp.name, 'w', format='ipod')
-    st = out.add_stream('aac', rate=sr, layout='mono')
-    st.bit_rate = bitrate
-    res = av.AudioResampler(format='fltp', layout='mono', rate=sr)
-    for fr in src.decode(st_in):
-        for o in res.resample(fr):
-            o.pts = None
-            for pkt in st.encode(o):
-                out.mux(pkt)
-    for pkt in st.encode(None):
-        out.mux(pkt)
-    out.close()
+    subprocess.run(ffmpeg_input(ogg)+['-ac', '1',
+                    '-ar', str(sr), '-c:a', 'aac', '-b:a', str(bitrate),
+                    '-movflags', '+faststart', tmp.name], check=True)
     data = open(tmp.name, 'rb').read()
     os.unlink(tmp.name)
     open(path, 'wb').write(data)
@@ -622,6 +614,10 @@ def build(folder, base, bg_png, bitrate=32000, quality=82, out_dir=None):
     out_dir = out_dir or os.path.join(folder, 'mobile')
     os.makedirs(out_dir, exist_ok=True)
 
+    authored = os.path.join(folder, base + '.board.json')
+    if os.path.exists(authored):
+        return build_authored(folder, base, timing, authored, bg_png, bitrate, quality, out_dir)
+
     board = os.path.join(folder, base + '.html')
     if os.path.exists(board):
         css, engine, slides_js = split_board(open(board, encoding='utf-8').read())
@@ -664,6 +660,59 @@ def build(folder, base, bg_png, bitrate=32000, quality=82, out_dir=None):
     print(f'{out}  ({os.path.getsize(out) / 1e6:.1f} MB)  {len(segs)} بخش  '
           f'bg {len(bg) // 1024}KB  audio {len(audio_bytes(os.path.join(folder, base + ".ogg"), bitrate)) // 1024}KB')
     return out, title, timing
+
+
+def build_authored(folder, base, timing, board_path, bg_png, bitrate, quality, out_dir):
+    from align_asr import norm
+    boards = json.load(open(board_path, encoding='utf-8'))['sections']
+    if len(boards) != len(timing['sections']):
+        raise ValueError(f'{base}: authored sections do not match transcript sections')
+    segs = []
+    for i, board in enumerate(boards):
+        sec = timing['sections'][i]
+        for item in board['items']:
+            sentence = timing['sentences'][item['sentence']]
+            if sentence['sec'] != i:
+                raise ValueError(f'{base}: note points to another section')
+            anchor = norm(item['anchor'])
+            offset = norm(sentence['text']).find(anchor)
+            if offset < 0:
+                raise ValueError(f'{base}: note anchor not found: {item["anchor"]}')
+            words = sentence.get('words', [])
+            if not words:
+                raise ValueError(f'{base}: word alignment required; run align_asr.py first')
+            acc = 0
+            item['t'] = sentence['t']
+            for word in words:
+                if acc + len(norm(word['text'])) > offset:
+                    item['t'] = word['t']
+                    break
+                acc += len(norm(word['text']))
+        board['items'].sort(key=lambda x: x['t'])
+        segs.append({'start': sec['start'], 'end': sec['end'], 'title': board['title'], 'slide': i})
+    lines = []
+    if timing.get('prelude'):
+        prelude = timing['prelude']
+        lines.append({**prelude, 'words': prelude.get('words') or [{'text': prelude['text'], 't': prelude['t'], 'end': prelude['e']}]})
+    edits_path=pathlib.Path(folder,base+'.caption-edits.json')
+    excluded=set(json.loads(edits_path.read_text()).get('excluded',[])) if edits_path.exists() else set()
+    lines += [{'t': s['t'], 'e': s['end'], 'text': s['text'], 'words': s['words']}
+              for s in timing['sentences'] if s['text'] not in excluded]
+    template = pathlib.Path(HERE, 'mobile_template.html').read_text()
+    values = {'__TITLE__': esc(nice_title(timing.get('doc'), base)),
+              '__FONTS__': font_css(out_dir), '__BG__': b64(bg_jpeg(bg_png, quality), width=None),
+              '__AUDIO__': b64(audio_bytes(os.path.join(folder, base+'.ogg'), bitrate)),
+              '__SEGS__': json.dumps(segs, ensure_ascii=False),
+              '__LINES__': json.dumps(lines, ensure_ascii=False),
+              '__BOARDS__': json.dumps(boards, ensure_ascii=False),
+              '__DUR__': str(timing['stats']['duration']),
+              '__PLAYER__': pathlib.Path(HERE, 'mobile_player.js').read_text()}
+    for marker, value in values.items():
+        template = template.replace(marker, value)
+    out = os.path.join(out_dir, base+'.html')
+    pathlib.Path(out).write_text(template)
+    print(f'{out}: {len(boards)} authored sections, {sum(len(b["items"]) for b in boards)} timed notes')
+    return out, nice_title(timing.get('doc'), base), timing
 
 
 def build_index(folder, out_dir, rows, heading=None):

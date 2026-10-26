@@ -1,0 +1,482 @@
+{
+ "version": 1,
+ "sections": [
+  {
+   "section": 0,
+   "items": [
+    {
+     "anchor": "هر دو مجموعه",
+     "text": "اشتراک: عضوهایی که در هر دو مجموعه‌اند؛ نماد `A∩B`.",
+     "sentence": 3,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "همهٔ عضوهای دو مجموعه",
+     "text": "اجتماع: عضوهای حداقل یکی از دو مجموعه؛ نماد `A∪B`.",
+     "sentence": 4,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "توی مجموعهٔ دوم نیستن",
+     "text": "تفاضل: عضو اول و خارج از دوم؛ نماد `A−B`.",
+     "sentence": 5,
+     "anchor_match_score": 100
+    }
+   ],
+   "title": "ریاضی نهم، فصل اوّل، درس سوم: اجتماع، اشتراک و تفاضل مجموعه‌ها"
+  },
+  {
+   "section": 1,
+   "items": [
+    {
+     "anchor": "فقط والیبال",
+     "text": "فقط والیبال: سامان، احسان، فرشید، حسین.",
+     "sentence": 11,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "فقط عضو تیم فوتبال",
+     "text": "فقط فوتبال: محمد، حسن، کیوان، سبحان.",
+     "sentence": 12,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "به مجموعه‌ای که همهٔ عضوهای مشترک",
+     "text": "اگر V والیبال و F فوتبال باشد: `V∩F={علی،رضا}`.",
+     "diagram": {
+      "type": "venn",
+      "a": "V",
+      "b": "F",
+      "left": "۴ نفر",
+      "middle": "۲ نفر",
+      "right": "۴ نفر",
+      "fill": "intersection",
+      "label": "اشتراک دو تیم: علی و رضا؛ تعدادها در سه ناحیه"
+     },
+     "sentence": 20,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "دو شرط رو هم‌زمان",
+     "text": "`x∈V∩F ⇔ x∈V` و `x∈F`؛ هر دو شرط لازم‌اند.",
+     "sentence": 21,
+     "anchor_match_score": 100
+    }
+   ],
+   "title": "اعضای دو تیم و معنی «هر دو»"
+  },
+  {
+   "section": 2,
+   "items": [
+    {
+     "anchor": "حداقل در یکی",
+     "text": "اجتماع یعنی حضور در حداقل یکی؛ عضو مشترک هم پذیرفته می‌شود.",
+     "sentence": 26,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "ده نفر متفاوت",
+     "text": "تعداد اعضای اجتماع دو تیم: `6+6−2=10`.",
+     "diagram": {
+      "type": "venn",
+      "a": "V",
+      "b": "F",
+      "left": "۴ نفر",
+      "middle": "۲ نفر",
+      "right": "۴ نفر",
+      "fill": "union",
+      "label": "اجتماع دو تیم، ده نفر متفاوت"
+     },
+     "sentence": 29,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "فقط یکی از اون دو نیست",
+     "text": "«یا» در اجتماع به معنی «فقط یکی» نیست.",
+     "sentence": 33,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "هم قسمت‌های جدا و هم قسمت مشترک",
+     "text": "نمودار اجتماع، هر سه ناحیهٔ دو منحنی را پوشش می‌دهد.",
+     "sentence": 36,
+     "anchor_match_score": 100
+    }
+   ],
+   "title": "معنی «حداقل یکی» و اجتماع"
+  },
+  {
+   "section": 3,
+   "items": [
+    {
+     "anchor": "منفی دو تا سه",
+     "text": "`A={1,2,3,4,5,6}`؛ `B={−2,−1,0,1,2,3}`.",
+     "sentence": 40,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "اشتراک آ و بی",
+     "text": "`A∩B={1,2,3}`.",
+     "diagram": {
+      "type": "venn",
+      "left": "4,5,6",
+      "middle": "1,2,3",
+      "right": "−2,−1,0",
+      "fill": "intersection",
+      "label": "اشتراک مجموعهٔ طبیعی‌های ۱ تا ۶ و صحیح‌های منفی ۲ تا ۳"
+     },
+     "sentence": 42,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "نه عضو داره",
+     "text": "`A∪B={−2,−1,0,1,2,3,4,5,6}`؛ ۹ عضو.",
+     "sentence": 46,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "جابه‌جاکردن اسم",
+     "text": "`A∩B=B∩A` و `A∪B=B∪A`.",
+     "sentence": 55,
+     "anchor_match_score": 100
+    }
+   ],
+   "title": "همون فکر با عددها"
+  },
+  {
+   "section": 4,
+   "items": [
+    {
+     "anchor": "اشتراکشون فقط",
+     "text": "شرط مثال: `A∪B={a,b,c,d,e}` و `A∩B={b,e}`.",
+     "sentence": 58,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "بی و ای باید",
+     "text": "b و e در ناحیهٔ مشترک‌اند؛ a و c و d فقط در یکی از دو مجموعه‌اند.",
+     "sentence": 59,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "هر دو شرط هم‌زمان",
+     "text": "هر جواب باید هم شرط اجتماع و هم شرط اشتراک را رعایت کند.",
+     "sentence": 66,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "چند جور قابل‌ساختن",
+     "text": "دانستن اجتماع و اشتراک، لزوماً A و B را یکتا تعیین نمی‌کند.",
+     "sentence": 67,
+     "anchor_match_score": 100
+    }
+   ],
+   "title": "از روی اجتماع و اشتراک، همیشه یه جواب یکتا نداریم"
+  },
+  {
+   "section": 5,
+   "items": [
+    {
+     "anchor": "والیبال منهای فوتبال",
+     "text": "فقط والیبال: `{سامان،احسان،فرشید،حسین}`.",
+     "diagram": {
+      "type": "venn",
+      "a": "V",
+      "b": "F",
+      "left": "۴ نفر",
+      "middle": "۲ نفر",
+      "right": "۴ نفر",
+      "fill": "left",
+      "label": "فقط والیبال؛ ناحیهٔ اختصاصی مجموعهٔ اول"
+     },
+     "sentence": 73,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "عضو آ باشه و عضو بی نباشه",
+     "text": "`A−B={x : x∈A و x∉B}`.",
+     "sentence": 76,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "فوتبال منهای والیبال",
+     "text": "فقط فوتبال: `{محمد،حسن،کیوان،سبحان}`.",
+     "sentence": 78,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "جابه‌جایی دو مجموعه",
+     "text": "تفاضل عموماً جابه‌جاپذیر نیست: `A−B≠B−A`.",
+     "sentence": 80,
+     "anchor_match_score": 100
+    }
+   ],
+   "title": "تفاضل؛ فقط عضوهای مجموعهٔ اول"
+  },
+  {
+   "section": 6,
+   "items": [
+    {
+     "anchor": "آ شامل سه و چهاره",
+     "text": "`A={3,4}`، `B={4,5}`، `C={1,2,3,4,5}`.",
+     "sentence": 90,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "اجتماع آ و بی شامل",
+     "text": "`A∪B={3,4,5}⊆C`؛ ولی `C⊄A∪B`.",
+     "sentence": 93,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "چهار عضو اشتراکه",
+     "text": "`A∩B={4}`؛ `2∉A∪B`.",
+     "sentence": 97,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "داخل مجموعهٔ بزرگ‌تر",
+     "text": "عضو بیرون دو منحنی داخلی ممکن است هنوز در مجموعهٔ بزرگ‌تر باشد.",
+     "sentence": 102,
+     "anchor_match_score": 100
+    }
+   ],
+   "title": "نمودار سه‌مجموعه‌ای کتاب"
+  },
+  {
+   "section": 7,
+   "items": [
+    {
+     "anchor": "شمارنده‌های طبیعی هجده",
+     "text": "`D12={1,2,3,4,6,12}`؛ `D18={1,2,3,6,9,18}`.",
+     "sentence": 104,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "شمارنده‌های مشترک",
+     "text": "`D12∩D18={1,2,3,6}`.",
+     "sentence": 105,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "نه و هجده هستن",
+     "text": "`D18−D12={9,18}`؛ `D12−D18={4,12}`.",
+     "sentence": 106,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "حسابی‌ها منهای طبیعی‌ها",
+     "text": "`N−Z=∅`؛ `W−N={0}`؛ `Z−N={…,−2,−1,0}`.",
+     "sentence": 113,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "خود آ یه مجموعه‌ست",
+     "text": "`n(A)` عددِ تعداد عضوهای A است؛ خود A مجموعه است.",
+     "sentence": 117,
+     "anchor_match_score": 100
+    }
+   ],
+   "title": "شمارنده‌ها و تفاضل مجموعه‌های عددی"
+  },
+  {
+   "section": 8,
+   "items": [
+    {
+     "anchor": "سی شامل یک، هفت",
+     "text": "`A={2,4,6,8,9}`؛ `B={1,3,5,7,9}`؛ `C={1,7,10,11}`.",
+     "sentence": 123,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "اشتراک آ و بی فقط",
+     "text": "`A∩B={9}`؛ `A−B={2,4,6,8}`.",
+     "sentence": 132,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "ده و یازده می‌مونن",
+     "text": "`C−B={10,11}`.",
+     "sentence": 134,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "دوباره دو، سه",
+     "text": "`(A∪B)−C=(A−C)∪(B−C)={2,3,4,5,6,8,9}`.",
+     "sentence": 143,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "اشتراک آ با خودش",
+     "text": "`A∩A=A`؛ `A∩∅=∅`؛ `A∪A=A`؛ `A∪∅=A`.",
+     "sentence": 148,
+     "anchor_match_score": 100
+    }
+   ],
+   "title": "تمرین اول؛ سه مجموعه و چند دستور"
+  },
+  {
+   "section": 9,
+   "items": [
+    {
+     "anchor": "قسمت مخصوص بی",
+     "text": "فقط A: `{1,2,9}`؛ مشترک: `{3,4,5}`؛ فقط B: `{6,7}`.",
+     "diagram": {
+      "type": "venn",
+      "left": "1,2,9",
+      "middle": "3,4,5",
+      "right": "6,7",
+      "label": "ناحیه‌های نمودار تمرین دوم"
+     },
+     "sentence": 154,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "درمجموع هشت عضو",
+     "text": "`n(A)=6`، `n(B)=5`، `n(A∪B)=8`.",
+     "sentence": 156,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "تمام آ دوباره",
+     "text": "`(A−B)∪(A∩B)=A`.",
+     "sentence": 158,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "فقط قسمت‌های غیرمشترک",
+     "text": "`(A−B)∪(B−A)={1,2,6,7,9}`؛ بخش مشترک حذف است.",
+     "sentence": 162,
+     "anchor_match_score": 100
+    }
+   ],
+   "title": "تمرین نموداری و دقت در شمردن"
+  },
+  {
+   "section": 10,
+   "items": [
+    {
+     "anchor": "زیرمجموعهٔ اجتماع",
+     "text": "`A∩B⊆A∪B`.",
+     "sentence": 171,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "هرکدوم از آ و بی",
+     "text": "`A⊆A∪B` و `B⊆A∪B`.",
+     "sentence": 173,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "اشتراک زیرمجموعهٔ هرکدوم",
+     "text": "`A∩B⊆A` و `A∩B⊆B`.",
+     "sentence": 174,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "تفاضل آ منهای بی",
+     "text": "`A−B⊆A`؛ تفاضل عضو تازه از بیرون A نمی‌آورد.",
+     "sentence": 176,
+     "anchor_match_score": 100
+    }
+   ],
+   "title": "رابطه‌هایی که از معنی عمل‌ها به دست میان"
+  },
+  {
+   "section": 11,
+   "items": [
+    {
+     "anchor": "بی کامل داخل آ",
+     "text": "اگر `B⊆A`، آنگاه `A∩B=B`.",
+     "sentence": 186,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "تمام بی رو هاشور",
+     "text": "اگر `A∩B=∅`، آنگاه `B−A=B`.",
+     "sentence": 191,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "همون اجتماع آ و سیه",
+     "text": "`(A−C)∪C=A∪C`.",
+     "sentence": 196,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "داخل پرانتز",
+     "text": "برای هاشور چندمرحله‌ای، ابتدا داخل پرانتز و سپس عمل بیرونی را اجرا کنید.",
+     "sentence": 198,
+     "anchor_match_score": 100
+    }
+   ],
+   "title": "هاشورزدن شکل‌ها با یه مسیر روشن"
+  },
+  {
+   "section": 12,
+   "items": [
+    {
+     "anchor": "مضرب‌های سه می‌ذارم",
+     "text": "در طبیعی‌های ۱ تا ۱۲: `A={2,4,6,8,10,12}`؛ `B={3,6,9,12}`.",
+     "sentence": 202,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "شش و دوازدهه",
+     "text": "`A∩B={6,12}`؛ `A−B={2,4,8,10}`.",
+     "sentence": 203,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "بی منهای آ",
+     "text": "`B−A={3,9}`.",
+     "sentence": 206,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "منهای دو، برابر هشت",
+     "text": "برای مجموعه‌های متناهی: `n(A∪B)=n(A)+n(B)−n(A∩B)=6+4−2=8`.",
+     "sentence": 214,
+     "anchor_match_score": 100
+    }
+   ],
+   "title": "یه مثال تکمیلی با دو شرط عددی"
+  },
+  {
+   "section": 13,
+   "items": [
+    {
+     "anchor": "باید تعداد عضوهای مشترک",
+     "text": "برای مجموعه‌های متناهی: `n(A−B)=n(A)−n(A∩B)`.",
+     "sentence": 223,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "جواب اشتراک نمی‌تونه",
+     "text": "کنترل اشتراک: هر عضو جواب باید در هر دو مجموعه باشد.",
+     "sentence": 228,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "تمام عضوهای هر دو",
+     "text": "کنترل اجتماع: همهٔ عضوهای هر دو مجموعه، بدون تکرار.",
+     "sentence": 231,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "هیچ‌کدومشون در مجموعهٔ دوم",
+     "text": "کنترل تفاضل: عضو اول و بیرون از دوم.",
+     "sentence": 235,
+     "anchor_match_score": 100
+    },
+    {
+     "anchor": "نابرابری فقط",
+     "text": "نابرابری دو مجموعه به معنی تهی‌بودن اشتراک نیست.",
+     "sentence": 240,
+     "anchor_match_score": 100
+    }
+   ],
+   "title": "کنترل جواب بدون حل دوباره"
+  }
+ ]
+}
