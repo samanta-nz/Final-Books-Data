@@ -1,0 +1,9 @@
+{
+  "numpy": "2.3.5",
+  "pillow": "12.3.0",
+  "rapidfuzz": "3.14.6",
+  "faster-whisper": "1.2.1",
+  "playwright": "1.62.0",
+  "av": "19.0.2",
+  "ctranslate2": "4.8.4"
+}

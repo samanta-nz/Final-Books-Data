@@ -12,7 +12,7 @@ ap.add_argument('--cache',type=pathlib.Path,required=True)
 args=ap.parse_args()
 ROOT=args.target;CACHE=args.cache
 model=WhisperModel('small',device='cpu',compute_type='int8',cpu_threads=3)
-for path in sorted(ROOT.glob('F0[12]/*.timing.json')):
+for path in (sorted(ROOT.rglob('*.timing.json')) if ROOT.is_dir() else [ROOT]):
     cache=CACHE/path.name.replace('.timing.json','.words.json');data=json.loads(cache.read_text())
     if data.get('gap_repaired'):continue
     provisional=align(json.loads(path.read_text()),data)

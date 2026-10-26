@@ -210,7 +210,7 @@ def main():
     ap.add_argument('--align-only', action='store_true')
     args = ap.parse_args()
     args.cache.mkdir(parents=True, exist_ok=True)
-    files = sorted(args.target.glob('F0[12]/*.timing.json')) if args.target.is_dir() else [args.target]
+    files = sorted(args.target.rglob('*.timing.json')) if args.target.is_dir() else [args.target]
     pipeline = None
     if not args.align_only:
         from faster_whisper import WhisperModel, BatchedInferencePipeline

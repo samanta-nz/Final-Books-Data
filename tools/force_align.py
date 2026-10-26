@@ -160,7 +160,7 @@ if __name__=='__main__':
     args=ap.parse_args()
     model=WhisperModel('small',device='cpu',compute_type='int8',cpu_threads=3)
     tokenizer=Tokenizer(model.hf_tokenizer,model.model.is_multilingual,task='transcribe',language='fa')
-    files=sorted(args.target.glob('F0[12]/*.timing.json')) if args.target.is_dir() else [args.target]
+    files=sorted(args.target.rglob('*.timing.json')) if args.target.is_dir() else [args.target]
     for path in files:
         recognized=json.loads((args.cache/path.name.replace('.timing.json','.words.json')).read_text())
         if not recognized.get('complete'):raise ValueError('Recognition cache incomplete')
